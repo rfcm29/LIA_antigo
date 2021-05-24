@@ -40,4 +40,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the userType that owns the User_type
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function userType(): BelongsTo
+    {
+        return $this->belongsTo(User_type::class);
+    }
 }
