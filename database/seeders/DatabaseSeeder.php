@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categoria;
+use App\Models\Itens;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\User_type;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +17,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        User::factory(1)->create();
+        Categoria::create([
+            'descricao' => 'Audio'
+        ]);
+
+        Categoria::create([
+            'descricao' => 'Fotografia'
+        ]);
+
+        User_type::create([
+            'descricao' => 'admin'
+        ]);
+
+        User_type::create([
+            'descricao' => 'user'
+        ]);
     }
 }
