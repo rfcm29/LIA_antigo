@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', [Auth::class, 'login'])->name('auth.login');
+Route::get('/register', [Auth::class, 'register'])->name('auth.register');
+Route::post('/save', [Auth::class, 'save'])->name('auth.save');
+Route::post('/check', [Auth::class, 'check'])->name('auth.check');
+
+//usar grupos para limitar acesso a certas rotasd
