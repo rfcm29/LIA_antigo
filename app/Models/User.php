@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'user_type',
         'password',
     ];
 
@@ -50,5 +51,10 @@ class User extends Authenticatable
     public function userType(): BelongsTo
     {
         return $this->belongsTo(User_type::class);
+    }
+
+    public function isAdmin() {
+        $admin = User_type::get('id')->where('descricao', 'admin');
+        return $this->user_type == $admin;
     }
 }

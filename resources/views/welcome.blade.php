@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    @if(session()->has('LoggedUser'))
+    @if(Auth::check())
         <a href="{{ route('auth.logout') }}" class="btn btn-block btn-primary">Log out</a>
     @else
-        <a href="{{ route('auth.login') }}" class="btn btn-block btn-primary">Log In</a>
+        <a href="{{ route('login') }}" class="btn btn-block btn-primary">Log In</a>
     @endif
 
 </body>
