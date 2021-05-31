@@ -50,10 +50,21 @@ class Auth extends Controller
         } else {
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser', $userInfo->id);
-                return redirect('/');
+                return redirect('admin/dashboard');
             } else {
-                return back()->with('fial', 'Incorrect password');
+                return back()->with('fail', 'Incorrect password');
             }
         }
+    }
+
+    function logout(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+            return redirect('/login');
+        }
+    }
+
+    function dashboard(){
+        return view('admin.dashboard');
     }
 }

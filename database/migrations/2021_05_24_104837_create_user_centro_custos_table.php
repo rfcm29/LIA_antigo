@@ -15,8 +15,8 @@ class CreateUserCentroCustosTable extends Migration
     {
         Schema::create('user_centro_custos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('centro_custos');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('centro_custos');
             $table->timestamps();
         });
     }
