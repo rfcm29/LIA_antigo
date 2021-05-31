@@ -15,7 +15,7 @@ class CreateKitsTable extends Migration
     {
         Schema::create('kits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categoria');
+            $table->unsignedBigInteger('categoria');
             $table->string('descricao');
             $table->string('observacoes');
             $table->timestamps();

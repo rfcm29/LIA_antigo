@@ -15,8 +15,8 @@ class CreateItemKitsTable extends Migration
     {
         Schema::create('item_kits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_item');
-            $table->foreignId('id_kit');
+            $table->unsignedBigInteger('id_item');
+            $table->unsignedBigInteger('id_kit');
             $table->timestamps();
         });
     }

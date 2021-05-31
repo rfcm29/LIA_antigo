@@ -15,7 +15,7 @@ class CreateItensTable extends Migration
     {
         Schema::create('itens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categoria');
+            $table->unsignedBigInteger('categoria');
             $table->string('ref_ipvc');
             $table->string('serial_number');
             $table->string('marca');

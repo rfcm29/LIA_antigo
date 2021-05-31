@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ItensController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [Auth::class, 'login'])->name('auth.login');
-Route::get('/register', [Auth::class, 'register'])->name('auth.register');
-Route::post('/save', [Auth::class, 'save'])->name('auth.save');
-Route::post('/check', [Auth::class, 'check'])->name('auth.check');
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/save', [AuthController::class, 'save'])->name('auth.save');
+Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::resource('admin/itens', ItensController::class);
 
-//usar grupos para limitar acesso a certas rotasd
+//usar grupos para limitar acesso a certas rotas
+
+Route::group(['middleware'=> ['AuthCheck']], function(){
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+});
+
+Route::group(['middleware'=> ['UserTypeCheck']], function () {
+    Route::get('/admin/dashboard', [AuthController::class, 'dashboard']);
+});

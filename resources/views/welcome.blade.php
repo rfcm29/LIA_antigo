@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <a href="{{ route('auth.login') }}" class="btn btn-block btn-primary">Log In</a>
+    <a href="{{ route('login') }}" class="btn btn-block btn-primary">Log In</a>
 
     <nav class="navbar navbar-expand-sm navbar-light bg-light" data-toggle="affix">
         <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">

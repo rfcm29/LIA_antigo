@@ -15,8 +15,8 @@ class CreateReservaItemsTable extends Migration
     {
         Schema::create('reserva_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_item');
-            $table->foreignId('id_reserva');
+            $table->unsignedBigInteger('id_item');
+            $table->unsignedBigInteger('id_reserva');
             $table->timestamps();
         });
     }
