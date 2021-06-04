@@ -55,53 +55,65 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="https://elearning.ipvc.pt/">
+                    <div class="categoria-container">
                         <img src="images/camera.jpg" width="100%"/>
-                        <div class="nome">Câmaras</div>
-                        </a>
+                        <div class="nome">
+                            <div class="nome-texto">
+                                <a href="https://elearning.ipvc.pt/">CÂMARAS</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="https://elearning.ipvc.pt/">
-                            <img src="images/camera.jpg" width="100%" />
-                            <div class="nome">Lentes</div>
-                        </a>
+                    <div class="categoria-container">
+                        <img src="images/camera.jpg" width="100%"/>
+                        <div class="nome">
+                            <div class="nome-texto">
+                                <a href="https://elearning.ipvc.pt/">LENTES</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="https://elearning.ipvc.pt/">
-                            <img src="images/camera.jpg" width="100%" />
-                            <div class="nome">Iluminação</div>
-                        </a>
+                    <div class="categoria-container">
+                        <img src="images/camera.jpg" width="100%"/>
+                        <div class="nome">
+                            <div class="nome-texto">
+                                <a href="https://elearning.ipvc.pt/">ILUMINAÇÃO</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div> <br>
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="https://elearning.ipvc.pt/">
-                            <img src="images/camera.jpg" width="100%"/>
-                            <div class="nome">Audio</div>
-                        </a>
+                    <div class="categoria-container">
+                        <img src="images/camera.jpg" width="100%"/>
+                        <div class="nome">
+                            <div class="nome-texto">
+                                <a href="https://elearning.ipvc.pt/">AUDIO</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="https://elearning.ipvc.pt/">
-                            <img src="images/camera.jpg" width="100%" />
-                            <div class="nome">Tripés</div>
-                        </a>
+                    <div class="categoria-container">
+                        <img src="images/camera.jpg" width="100%" />
+                        <div class="nome">
+                            <div class="nome-texto">
+                                <a href="https://elearning.ipvc.pt/">TRIPÉS</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
-                    <div class="card">
-                        <a class="img-card" href="https://elearning.ipvc.pt/">
-                            <img src="images/camera.jpg" width="100%" />
-                            <div class="nome">Acessórios</div>
-                        </a>
+                    <div class="categoria-container">
+                        <img src="images/camera.jpg" width="100%" />
+                        <div class="nome">
+                            <div class="nome-texto">
+                                <a href="https://elearning.ipvc.pt/">ACESSÓRIOS</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
