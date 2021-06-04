@@ -18,7 +18,11 @@ class UserTypeCheck
      */
     public function handle(Request $request, Closure $next)
     {
+        if(auth()->user() == null){
+            abort(404);
+        }
         $userType = User_type::find(auth()->user()->user_type);
+
         if($userType->descricao == 'admin'){
             return $next($request);
         }

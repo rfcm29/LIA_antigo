@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <a href="{{ route('login') }}" class="btn btn-block btn-primary">Log In</a>
+    <div>
+        @if(Auth::check())
+        <a href="{{ route('auth.logout') }}" class="btn btn-block btn-primary">Log out</a>
+        @else
+        <a href="{{ route('login') }}" class="btn btn-block btn-primary">Log In</a>
+        @endif
+        @if (Auth::check() && Auth::user()->isAdmin())
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-block btn-primary">Administrador</a>
+        @endif
+    </div>
+
 
     <nav class="navbar navbar-expand-sm navbar-light bg-light" data-toggle="affix">
         <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">

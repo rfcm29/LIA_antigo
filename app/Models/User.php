@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use phpDocumentor\Reflection\Types\This;
 
 class User extends Authenticatable
 {
@@ -54,7 +56,6 @@ class User extends Authenticatable
     }
 
     public function isAdmin() {
-        $admin = User_type::get('id')->where('descricao', 'admin');
-        return $this->user_type == $admin;
+        return $this->user_type == '1';
     }
 }

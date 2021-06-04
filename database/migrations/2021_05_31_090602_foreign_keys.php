@@ -43,7 +43,6 @@ class ForeignKeys extends Migration
             $table->foreign('centro_custos')->references('id')->on('centro_custos')->onDelete('cascade');
         });
 
-
     }
 
     /**

@@ -23,7 +23,6 @@ Route::get('/register', [AuthController::class, 'register'])->name('auth.registe
 Route::post('/save', [AuthController::class, 'save'])->name('auth.save');
 Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
 Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-Route::resource('admin/itens', ItensController::class);
 
 //usar grupos para limitar acesso a certas rotas
 
@@ -32,5 +31,6 @@ Route::group(['middleware'=> ['AuthCheck']], function(){
 });
 
 Route::group(['middleware'=> ['UserTypeCheck']], function () {
-    Route::get('/admin/dashboard', [AuthController::class, 'dashboard']);
+    Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
+    Route::resource('admin/itens', ItensController::class);
 });

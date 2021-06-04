@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Itens extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'marca',
+        'modelo',
+        'ref_ipvc',
+        'serial_number',
+        'categoria'
+    ];
 }

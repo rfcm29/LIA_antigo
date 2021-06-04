@@ -46,7 +46,7 @@
                     </div>
                     <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
                     <br>
-                    <a href="{{ route('auth.login') }}">Sign In</a>
+                    <a href="{{ route('login') }}">Sign In</a>
                 </form>
             </div>
         </div>

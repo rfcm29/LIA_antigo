@@ -535,12 +535,75 @@ pre code {
   overflow-y: scroll;
 }
 
-.wrapper {
-  /*display: table;*/
-  height: 100%;
-  /*width: 100%;*/
-  margin: auto;
+#wrapper {
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+  flex: 1 0 auto;
 }
+
+#content-wrapper{
+    width: 100%;
+    overflow-x: hidden;
+    flex: 1 0 auto;
+}
+
+#sidebar-wrapper{
+    z-index:1;
+    position: absolute;
+    width:250px;
+    height:100%;
+    overflow-y:hidden;
+    background: #6574cd;
+    opacity:0.9;
+      transition:all .5s;
+      display:flex;
+      align-items:center;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar-nav{
+    padding:0;
+    list-style:none;
+      transition:all .5s;
+      width:100%;
+      text-align:center;
+  }
+
+  .sidebar-nav li{
+    line-height:40px;
+      width:100%;
+      transition:all .3s;
+      padding:10px;
+  }
+
+  .sidebar-nav li a {
+    display:block;
+    text-decoration:none;
+    color:#ddd;
+  }
+
+  .sidebar-nav li:hover{
+    background:#6cb2eb;
+  }
 
 .container,
 .container-fluid,

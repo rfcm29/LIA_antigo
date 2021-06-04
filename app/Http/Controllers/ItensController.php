@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Itens;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class ItensController extends Controller
     {
         $itens = Itens::all();
 
-        return ['itens' => $itens];
+        return view('admin.itens.index', ['itens' => $itens]);
     }
 
     /**
@@ -26,7 +27,7 @@ class ItensController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.itens.create');
     }
 
     /**
@@ -37,7 +38,9 @@ class ItensController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Itens::create($request->all());
+
+        return redirect('admin/itens');
     }
 
     /**
