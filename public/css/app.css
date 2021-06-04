@@ -4487,6 +4487,24 @@ input[type=button].btn-block {
 .card-group > .card {
   margin-bottom: 15px;
 }
+
+.card .nome{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card:hover .img-card{
+  opacity: 0.3;
+}
+
+.card:hover .nome{
+  opacity: 1;
+}
+
 @media (min-width: 576px) {
   .card-group {
     display: flex;

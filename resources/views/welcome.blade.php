@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <a href="{{ route('login') }}" class="btn btn-block btn-primary">Log In</a>
+    @if(Auth::check())
+        <a href="{{ route('auth.logout') }}" class="btn btn-block btn-primary">Log out</a>
+    @else
+        <a href="{{ route('login') }}" class="btn btn-block btn-primary">Log In</a>
+    @endif
+    
 
     <nav class="navbar navbar-expand-sm navbar-light bg-light" data-toggle="affix">
         <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
@@ -47,21 +52,24 @@
                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="https://elearning.ipvc.pt/">
-                        <img src="images/camera.jpg" width="100%"/> CATEGORIA 1
+                        <img src="images/camera.jpg" width="100%"/>
+                        <div class="nome">Câmaras</div>
                         </a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="https://elearning.ipvc.pt/">
-                        <img src="images/camera.jpg" width="100%" /> CATEGORIA 2
+                            <img src="images/camera.jpg" width="100%" />
+                            <div class="nome">Lentes</div>
                         </a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="https://elearning.ipvc.pt/">
-                        <img src="images/camera.jpg" width="100%" /> CATEGORIA 3
+                            <img src="images/camera.jpg" width="100%" />
+                            <div class="nome">Iluminação</div>
                         </a>
                     </div>
                 </div>
@@ -70,21 +78,24 @@
                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="https://elearning.ipvc.pt/">
-                        <img src="images/camera.jpg" width="100%"/> CATEGORIA 4
+                            <img src="images/camera.jpg" width="100%"/>
+                            <div class="nome">Audio</div>
                         </a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="https://elearning.ipvc.pt/">
-                        <img src="images/camera.jpg" width="100%" /> CATEGORIA 5
+                            <img src="images/camera.jpg" width="100%" />
+                            <div class="nome">Tripés</div>
                         </a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="card">
                         <a class="img-card" href="https://elearning.ipvc.pt/">
-                        <img src="images/camera.jpg" width="100%" /> CATEGORIA 6
+                            <img src="images/camera.jpg" width="100%" />
+                            <div class="nome">Acessórios</div>
                         </a>
                     </div>
                 </div>
@@ -92,6 +103,7 @@
         </div>
     </div>
 </div>
+
 
 </body>
 </html>
