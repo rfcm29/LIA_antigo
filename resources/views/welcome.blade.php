@@ -8,28 +8,20 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <div>
-        @if(Auth::check())
-        <a href="{{ route('auth.logout') }}" class="btn btn-block btn-primary">Log out</a>
-        @else
-        <a href="{{ route('login') }}" class="btn btn-block btn-primary">Log In</a>
-        @endif
-        @if (Auth::check() && Auth::user()->isAdmin())
-            <a href="{{ route('admin.dashboard') }}" class="btn btn-block btn-primary">Administrador</a>
-        @endif
-    </div>
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-light" data-toggle="affix">
 
-
-    <nav class="navbar navbar-expand-sm navbar-light bg-light" data-toggle="affix">
-        <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
-            <a class="navbar-brand" href="#">
-                <img src="images/logo_1.png" width="70">
+       <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="images/logo_1.png" width="90">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHome" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse text-center" id="navbarsExample11">
-                <ul class="navbar-nav">
+
+            <div class="collapse navbar-collapse text-center" id="navbarHome">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">CAT 1</a>
                     </li>
@@ -47,8 +39,32 @@
                     </li>
                 </ul>
             </div>
+
         </div>
+
     </nav>
+
+    <div class="profile-container text-center">
+        <ul class="navbar-nav mr-auto">
+        @if(Auth::check())
+            <li class="nav-item">
+                <p>Olá, {{Auth::user()->name}}</p>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('auth.logout') }}" class="nav-link">LOGOUT</a>
+            </li>  
+        @else
+        <li class="nav-item">
+            <a href="{{ route('login') }}" class="nav-link">LOGIN</a>
+        </li>  
+        @endif
+        @if (Auth::check() && Auth::user()->isAdmin())
+        <li class="nav-item">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link">ADMIN</a>
+        </li>
+        @endif
+        </ul>
+    </div>
 
 <div class="wrapper">
     <div class="content">

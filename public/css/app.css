@@ -534,11 +534,20 @@ pre code {
   overflow-y: scroll;
 }
 
+.profile-container{
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-basis: auto;
+  flex-grow: 1;
+  align-items: center;
+}
+
 .categoria-container{
   position: relative;
   width: 100%;
   border:#000 solid 1px;
-  padding: 5px;
+  padding: 8px;
 }
 
 .categoria-container img{
@@ -575,6 +584,10 @@ pre code {
 
 .categoria-container:hover .nome{
   opacity: 1;
+}
+
+.wrapper{
+padding-top: 3%;
 }
 
 #wrapper {
@@ -4095,6 +4108,7 @@ input[type=button].btn-block {
   line-height: inherit;
   white-space: nowrap;
 }
+
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;
 }
@@ -4105,7 +4119,9 @@ input[type=button].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  font-size: 1.25rem;
 }
+
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
@@ -4386,6 +4402,7 @@ input[type=button].btn-block {
 }
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
 }
 .navbar-light .navbar-nav .nav-link.disabled {
   color: rgba(0, 0, 0, 0.3);
