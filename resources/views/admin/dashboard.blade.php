@@ -15,23 +15,20 @@
        @include('admin.side_bar')
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     @yield('content')
 
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->
 
         </div>
-        <!-- End of Content Wrapper -->
 
     </div>
 

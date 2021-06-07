@@ -9,6 +9,8 @@ class Itens extends Model
 {
     use HasFactory;
 
+    protected $table = 'itens';
+
     protected $fillable = [
         'marca',
         'modelo',

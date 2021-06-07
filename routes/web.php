@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItensController;
+use App\Http\Controllers\KitsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/save', [AuthController::class, 'save'])->name('auth.save');
@@ -33,4 +34,5 @@ Route::group(['middleware'=> ['AuthCheck']], function(){
 Route::group(['middleware'=> ['UserTypeCheck']], function () {
     Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('admin/itens', ItensController::class);
+    Route::resource('admin/kits', KitsController::class);
 });
