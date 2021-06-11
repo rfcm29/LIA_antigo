@@ -45,19 +45,25 @@
         <div class="collapse navbar-collapse text-center" id="navbarHome">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CAT 1</a>
+                    <a class="nav-link" href="#">CÂMARAS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CAT 2</a>
+                    <a class="nav-link" href="#">LENTES</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CAT 3</a>
+                    <a class="nav-link" href="#">ILUMINAÇÃO</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CAT 4</a>
+                    <a class="nav-link" href="#">AUDIO</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACTOS</a>
+                    <a class="nav-link" href="#">TRIPÉS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ACESSÓRIOS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link-c" href="#">CONTACTOS</a>
                 </li>
             </ul>
         </div>
@@ -81,7 +87,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="categoria-container">
-                        <img src="images/camera.jpg" width="100%"/>
+                        <img src="images/lentes.jpg" width="100%"/>
                         <div class="nome">
                             <div class="nome-texto">
                                 <a href="https://elearning.ipvc.pt/">LENTES</a>
@@ -113,7 +119,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="categoria-container">
-                        <img src="images/camera.jpg" width="100%" />
+                        <img src="images/tripe.jpg" width="100%" />
                         <div class="nome">
                             <div class="nome-texto">
                                 <a href="https://elearning.ipvc.pt/">TRIPÉS</a>
