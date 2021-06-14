@@ -9,56 +9,67 @@
 </head>
 <body>
 
-    <div class="container">
-        <nav class="nav justify-content-center">
-            @if(Auth::check())
-                    <p class="nav-item">Olá, {{Auth::user()->name}}</p>
-                    <a href="{{ route('auth.logout') }}" class="nav-link">LOGOUT</a>
-            @else
-                <a href="{{ route('login') }}" class="nav-link">LOGIN</a>
-            @endif
-            @if (Auth::check() && Auth::user()->isAdmin())
-                <a href="{{ route('admin.dashboard') }}" class="nav-link">ADMIN</a>
-            @endif
-        </nav>
+<div class="profile-container">
+        <ul class="nav justify-content-end">
+        @if(Auth::check())
+            <li class="nav-item">
+                <a href="#" class="nav-link">Olá, {{Auth::user()->name}}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('auth.logout') }}" class="nav-link">LOGOUT</a>
+            </li>
+        @else
+        <li class="nav-item">
+            <a href="{{ route('login') }}" class="nav-link">LOGIN</a>
+        </li>
+        @endif
+        @if (Auth::check() && Auth::user()->isAdmin())
+        <li class="nav-item">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link">ADMIN</a>
+        </li>
+        @endif
+        </ul>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" data-toggle="affix">
+
+    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <img src="images/logo_1.png" width="90">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHome" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-center" id="navbarHome">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CÂMARAS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LENTES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ILUMINAÇÃO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">AUDIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TRIPÉS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ACESSÓRIOS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link-c" href="#">CONTACTOS</a>
+                </li>
+            </ul>
+        </div>
     </div>
+</nav>
 
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" data-toggle="affix">
-
-            <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
-                 <a class="navbar-brand" href="{{ route('home') }}">
-                     <img src="images/logo_1.png" width="90">
-                 </a>
-
-                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHome" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                     <span class="navbar-toggler-icon"></span>
-                 </button>
-
-                 <div class="collapse navbar-collapse text-center" id="navbarHome">
-                     <ul class="navbar-nav mr-auto">
-                         <li class="nav-item">
-                             <a class="nav-link" href="#">CAT 1</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="#">CAT 2</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="#">CAT 3</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="#">CAT 4</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="#">CONTACTOS</a>
-                         </li>
-                     </ul>
-                 </div>
-
-             </div>
-
-        </nav>
-    </div>
 
 
 
@@ -78,7 +89,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="categoria-container">
-                        <img src="images/camera.jpg" width="100%"/>
+                        <img src="images/lentes.jpg" width="100%"/>
                         <div class="nome">
                             <div class="nome-texto">
                                 <a href="https://elearning.ipvc.pt/">LENTES</a>
@@ -88,7 +99,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="categoria-container">
-                        <img src="images/camera.jpg" width="100%"/>
+                        <img src="images/iluminacao.jpg" width="100%"/>
                         <div class="nome">
                             <div class="nome-texto">
                                 <a href="https://elearning.ipvc.pt/">ILUMINAÇÃO</a>
@@ -100,7 +111,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
                     <div class="categoria-container">
-                        <img src="images/camera.jpg" width="100%"/>
+                        <img src="images/audio.jpg" width="100%"/>
                         <div class="nome">
                             <div class="nome-texto">
                                 <a href="https://elearning.ipvc.pt/">AUDIO</a>
@@ -110,7 +121,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div class="categoria-container">
-                        <img src="images/camera.jpg" width="100%" />
+                        <img src="images/tripe.jpg" width="100%" />
                         <div class="nome">
                             <div class="nome-texto">
                                 <a href="https://elearning.ipvc.pt/">TRIPÉS</a>

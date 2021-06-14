@@ -536,11 +536,17 @@ pre code {
 
 .profile-container{
   width: 100%;
-  position: relative;
-  display: flex;
-  flex-basis: auto;
-  flex-grow: 1;
-  align-items: center;
+  background-color: var(--blue);
+}
+
+.profile-container a {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
+.profile-container a:hover {
+  color: black;
+  font-weight: bold;
 }
 
 .categoria-container{
@@ -4020,6 +4026,15 @@ input[type=button].btn-block {
   color: #6c757d;
   pointer-events: none;
   cursor: default;
+}
+
+.nav-link-c{
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--blue);
+}
+.nav-link-c:hover, .nav-link-c:focus {
+  text-decoration: none;
 }
 
 .nav-tabs {
