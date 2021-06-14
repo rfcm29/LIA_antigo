@@ -25,7 +25,7 @@ class KitsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kits.create');
     }
 
     /**
@@ -36,7 +36,8 @@ class KitsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        return $request;
     }
 
     /**
@@ -82,5 +83,19 @@ class KitsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $kit = $request->kit;
+        $data = Kits::where('lia_code', "LIKE", '%'.$kit.'%')->get();
+
+        return response()->json(['success'=> $data]);
+    }
+
+    public function userIndex($categoria){
+        $kits = Kits::where('categoria', $categoria);
+
+        return view('categoria', ['kits' => $kits]);
     }
 }

@@ -16,23 +16,19 @@ class ForeignKeys extends Migration
         Schema::table('users', function(Blueprint $table) {
             $table->foreign('user_type')->references('id')->on('user_types')->onDelete('cascade');
         });
+
         Schema::table('itens', function(Blueprint $table) {
-            $table->foreign('categoria')->references('id')->on('categorias')->onDelete('cascade');
+            $table->foreign('id_kit')->references('id')->on('kits')->onDelete('cascade');
+
         });
         Schema::table('kits', function(Blueprint $table) {
-            $table->foreign('categoria')->references('id')->on('categorias')->onDelete('cascade');
-        });
-        Schema::table('item_kits', function(Blueprint $table) {
-            $table->foreign('id_item')->references('id')->on('itens')->onDelete('cascade');
             $table->foreign('id_kit')->references('id')->on('kits')->onDelete('cascade');
+            $table->foreign('categoria')->references('id')->on('categorias')->onDelete('cascade');
+
         });
         Schema::table('reservas', function(Blueprint $table) {
             $table->foreign('user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('estado')->references('id')->on('estado_reservas')->onDelete('cascade');
-        });
-        Schema::table('reserva_items', function(Blueprint $table) {
-            $table->foreign('id_item')->references('id')->on('itens')->onDelete('cascade');
-            $table->foreign('id_reserva')->references('id')->on('reservas')->onDelete('cascade');
         });
         Schema::table('reserva_kits', function(Blueprint $table) {
             $table->foreign('id_kit')->references('id')->on('kits')->onDelete('cascade');

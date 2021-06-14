@@ -15,14 +15,11 @@ class CreateItensTable extends Migration
     {
         Schema::create('itens', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('categoria');
-            $table->string('ref_ipvc');
-            $table->string('serial_number');
-            $table->string('marca');
-            $table->string('modelo');
+            $table->string('ref_ipvc')->nullable();
+            $table->string('serial_number')->nullable();
+            $table->string('modelo')->nullable();
             $table->string('descricao');
-            $table->string('observacoes');
-            $table->float('preco');
+            $table->unsignedBigInteger('id_kit');
             $table->timestamps();
         });
     }

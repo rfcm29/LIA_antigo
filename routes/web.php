@@ -25,6 +25,8 @@ Route::post('/save', [AuthController::class, 'save'])->name('auth.save');
 Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
 Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
+Route::get('/categoria', [KitsController::class, 'userIndex']);
+
 //usar grupos para limitar acesso a certas rotas
 
 Route::group(['middleware'=> ['AuthCheck']], function(){
@@ -33,6 +35,6 @@ Route::group(['middleware'=> ['AuthCheck']], function(){
 
 Route::group(['middleware'=> ['UserTypeCheck']], function () {
     Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
-    Route::resource('admin/itens', ItensController::class);
     Route::resource('admin/kits', KitsController::class);
+    Route::post('/admin/kits/search', [KitsController::class, 'search'])->name('kits.search');
 });

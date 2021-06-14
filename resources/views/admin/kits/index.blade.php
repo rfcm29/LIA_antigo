@@ -8,5 +8,5 @@
         @endforeach
     </div>
 
-    <a href="/admin/itens/create" class="btn btn-block btn-primary">Novo Kit</a>
+    <a href="/admin/kits/create" class="btn btn-block btn-primary">Novo Kit</a>
 @endsection

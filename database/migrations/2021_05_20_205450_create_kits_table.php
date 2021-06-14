@@ -17,7 +17,11 @@ class CreateKitsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('categoria');
             $table->string('descricao');
-            $table->string('observacoes');
+            $table->string('observacoes')->nullable();
+            $table->string('lia_code');
+            $table->string('ref_ipvc')->nullable();
+            $table->double('preco');
+            $table->unsignedBigInteger('id_kit')->nullable();
             $table->timestamps();
         });
     }

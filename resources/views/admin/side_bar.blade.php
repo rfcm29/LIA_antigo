@@ -13,9 +13,6 @@
                   <a href="{{ route('admin.dashboard') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a href="/admin/itens">Itens</a>
-            </li>
-            <li class="nav-item">
                 <a href="/admin/kits">Kits</a>
             </li>
         </ul>

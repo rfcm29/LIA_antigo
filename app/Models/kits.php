@@ -10,13 +10,5 @@ class Kits extends Model
 {
     use HasFactory;
 
-    /**
-     * Get all of the itens for the kits
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function itens_kit(): HasMany
-    {
-        return $this->hasMany(Itens_kit::class);
-    }
+    protected $table = 'kits';
 }
