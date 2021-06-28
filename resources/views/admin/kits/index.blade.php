@@ -1,6 +1,7 @@
 @extends('admin.dashboard')
 
 @section('content')
+    <h1>Kits</h1>
     <div class="container">
         @foreach($kits as $kit)
             <div>{{ $kit->descricao }}</div>

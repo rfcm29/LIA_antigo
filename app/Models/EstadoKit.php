@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class centro_custos extends Model
+class EstadoKit extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'nome'
-    ];
 }

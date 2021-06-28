@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Itens;
 use App\Models\Kits;
+use EstadoKit;
 use Illuminate\Http\Request;
 
 class KitsController extends Controller
@@ -25,7 +28,8 @@ class KitsController extends Controller
      */
     public function create()
     {
-        return view('admin.kits.create');
+        $categorias = Categoria::all();
+        return view('admin.kits.create', ['categorias' => $categorias]);
     }
 
     /**
@@ -36,8 +40,60 @@ class KitsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'descricao' => 'required',
+            'lia_code' => 'required|unique:kits',
+            'preco' => 'required',
+            'categoria' => 'required'
+        ]);
 
-        return $request;
+        if($request->itens || $request->kits){
+            $request->validate([
+                'itens.*.descricao' => 'required',
+                'kits.*' => 'required|exists:kits,lia_code'
+            ]);
+
+            $kit = Kits::create([
+                'descricao' => $request->descricao,
+                'lia_code' => $request->lia_code,
+                'preco' => $request->preco,
+                'categoria' => $request->categoria,
+                'estado_kit' => 1
+            ]);
+
+            if($request->itens){
+                foreach ($request->itens as $item) {
+                    Itens::create([
+                        'descricao' => $item['descricao'],
+                        'modelo' => $item['modelo'],
+                        'serial_number' => $item['serial_number'],
+                        'ref_ipvc' => $item['ref_ipvc'],
+                        'id_kit' => $kit->id
+                    ]);
+                }
+            }
+
+            if($request->kits){
+                foreach ($request->kits as $_item) {
+                    $data = Kits::where('lia_code', $_item)->first();
+                    $data->id_kit = $kit->id;
+                    $data->save();
+                }
+            }
+
+            return redirect('/admin/kits');
+        }
+
+        $kit = Kits::create([
+            'descricao' => $request->descricao,
+            'lia_code' => $request->lia_code,
+            'preco' => $request->preco,
+            'categoria' => $request->categoria,
+            'estado_kit' => 1
+        ]);
+
+        return redirect('/admin/kits');
+        //return $request;
     }
 
     /**
@@ -48,7 +104,13 @@ class KitsController extends Controller
      */
     public function show($id)
     {
-        //
+        $itens = Kits::find($id)->itens;
+        $kits = Kits::find($id)->kits;
+        $kit = Kits::find($id);
+        $categoria = Kits::find($id)->Categoria;
+
+        //return $itens;
+        return view('admin.kits.show', ['kit' => $kit, 'kits' => $kits, 'itens' => $itens, 'categoria' => $categoria]);
     }
 
     /**
@@ -59,7 +121,13 @@ class KitsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $itens = Kits::find($id)->itens;
+        $kits = Kits::find($id)->kits;
+        $kit = Kits::find($id);
+        $categoria = Kits::find($id)->Categoria;
+
+        //return $itens;
+        return view('admin.kits.edit', ['kit' => $kit, 'kits' => $kits, 'itens' => $itens, 'categoria' => $categoria]);
     }
 
     /**
@@ -71,7 +139,7 @@ class KitsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -82,13 +150,22 @@ class KitsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kit1 = Kits::find($id)->kits;
+        foreach($kit1 as $item){
+            $item->id_kit = null;
+            $item->save();
+        }
+        $kit = Kits::find($id);
+        $kit->delete();
+
+        return redirect('/admin/kits');
     }
 
     public function search(Request $request)
     {
         $kit = $request->kit;
-        $data = Kits::where('lia_code', "LIKE", '%'.$kit.'%')->get();
+        $data = Kits::where('lia_code', "LIKE", '%'.$kit.'%')
+                        ->where('id_kit', null)->get();
 
         return response()->json(['success'=> $data]);
     }

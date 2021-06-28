@@ -3,35 +3,45 @@
 @section('content')
 
 <div class="container">
+    <h1>Criar Kit</h1>
+    <br>
     <form action="{{ route('kits.store') }}" method="post">
         @csrf
 
         <div class="form-group">
             <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao">
+            <input type="text" name="descricao" id="descricao" class="form-control">
         </div>
         <div class="form-group">
             <label for="lia_code">Codigo LIA</label>
-            <input type="text" name="lia_code" id="lia_code">
+            <input type="text" name="lia_code" id="lia_code" class="form-control">
         </div>
         <div class="form-group">
             <label for="ref_ipvc">Referência IPVC</label>
-            <input type="text" name="ref_ipvc" id="ref_ipvc">
+            <input type="text" name="ref_ipvc" id="ref_ipvc" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <select name="categoria" id="categoria" class="form-control">
+                @foreach ($categorias as $categoria)
+                    <option value="{{ $categoria->id }}">{{ $categoria->descricao }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="preco">Preço</label>
-            <input type="text" name="preco" id="preco">
+            <input type="text" name="preco" id="preco" class="form-control">
         </div>
         <table id="tableItem" class="table">
             <h1>Itens</h1>
             <thead>
-                <input type="button" class="addItem" value="Adicionar Item">
-                <input type="button" class="addKit" value="Adicionar Item">
+                <input type="button" class="addItem btn btn-primary" value="Adicionar Item">
+                <input type="button" class="addKit btn btn-primary" value="Adicionar Kit">
             </thead>
             <tbody>
             </tbody>
         </table>
-        <button type="submit">Criar Kit</button>
+        <button type="submit" class="btn btn-success">Criar Kit</button>
     </form>
 </div>
 
@@ -44,9 +54,13 @@
                 "<tr>" +
                     '<td>'+
                         '<label for="itens">Descrição</label>'+
-                        '<input type="text" name="itens['+i+'][descricao]">'+
-                        '<label for="itens">marca</label>'+
-                        '<input type="text" name="itens['+i+'][marca]">'+
+                        '<input type="text" name="itens['+i+'][descricao]" class="form-control"> </td>'+
+                        '<td> <label for="itens">Modelo</label>'+
+                        '<input type="text" name="itens['+i+'][modelo]" class="form-control"> </td>'+
+                        '<td> <label for="itens">Serial Number</label>'+
+                        '<input type="text" name="itens['+i+'][serial_number]" class="form-control"> </td>'+
+                        '<td><label for="itens">Referencia IPVC</label>'+
+                        '<input type="text" name="itens['+i+'][ref_ipvc]" class="form-control">'+
                     '</td>'+
                 "</tr>";
             $("#tableItem tbody").append(markup);
@@ -56,7 +70,7 @@
                 "<tr>" +
                     '<td>'+
                         '<label for="kits">Código Kit</label>'+
-                        '<input type="text" name="kits[]" class="kit" id>'+
+                        '<input type="text" name="kits[]" class="kit form-control">'+
                     '</td>'+
                 "</tr>";
             $("#tableItem tbody").append(markup);
