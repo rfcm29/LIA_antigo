@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItensController;
 use App\Http\Controllers\KitsController;
+use App\Http\Controllers\PerfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +18,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.menu');
 })->name('home');
 
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/save', [AuthController::class, 'save'])->name('auth.save');
 Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
 Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::get('/contactos', [AuthController::class, 'contactos'])->name('contactos');
+Route::get('/carrinho', [AuthController::class, 'carrinho'])->name('carrinho');
 
-Route::get('/categoria', [KitsController::class, 'userIndex']);
+Route::get('/categoria/{categoria}', [KitsController::class, 'getKits']);
+
+Route::get('/perfil/{id}', [PerfilController::class, 'index']);
 
 //usar grupos para limitar acesso a certas rotas
 

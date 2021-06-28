@@ -534,6 +534,26 @@ pre code {
   overflow-y: scroll;
 }
 
+.contactos-container{
+  display: flex;
+  align-items: center;
+  padding-top: 10%;
+  color: var(--blue);
+}
+
+.contactos-container .left{
+  width: 50%;
+  text-align: end;
+}
+
+.contactos-container .middle{
+  width: 10%;
+}
+
+.contactos-container .right{
+  width: 40%;
+}
+
 .profile-container{
   width: 100%;
   background-color: var(--blue);
@@ -590,6 +610,26 @@ pre code {
 
 .categoria-container:hover .nome{
   opacity: 1;
+}
+
+.produto{
+  display: flex;
+  background-color: var(--gray);
+  align-items: center;
+}
+
+.produto .left{
+  width: 60%;
+}
+
+.produto .middle{
+  width: 20%;
+  color: var(--blue);
+  font-size: 24px;
+}
+
+.produto .right{
+  width: 20%;
 }
 
 .wrapper{
@@ -665,6 +705,16 @@ padding-top: 3%;
   .sidebar-nav li:hover{
     background:#6cb2eb;
   }
+
+.container-btn{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  text-align: end;
+}
 
 .container,
 .container-fluid,
@@ -4493,6 +4543,7 @@ input[type=button].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  margin-bottom: 10px;
 }
 .card > hr {
   margin-right: 0;
@@ -4536,6 +4587,10 @@ input[type=button].btn-block {
   margin-bottom: 0;
 }
 
+.card-text-preco{
+  color: var(--blue);
+}
+
 .card-link:hover {
   text-decoration: none;
 }
@@ -4573,6 +4628,7 @@ input[type=button].btn-block {
   margin-right: -0.625rem;
   margin-left: -0.625rem;
 }
+
 
 .card-img-overlay {
   position: absolute;

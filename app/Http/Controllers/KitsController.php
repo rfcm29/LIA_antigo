@@ -93,9 +93,10 @@ class KitsController extends Controller
         return response()->json(['success'=> $data]);
     }
 
-    public function userIndex($categoria){
-        $kits = Kits::where('categoria', $categoria);
+    public function getKits($categoria){
+        $kits = Kits::where('categoria', $categoria)->get();
 
-        return view('categoria', ['kits' => $kits]);
+        return view('user.categoria', ['kits' => $kits]);
     }
+
 }

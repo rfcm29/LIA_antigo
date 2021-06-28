@@ -18,6 +18,14 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    function contactos(){
+        return view('user.contactos');
+    }
+
+    function carrinho(){
+        return view('user.carrinho');
+    }
+
     function save(Request $request){
         $request->validate([
             'name' => 'required',
