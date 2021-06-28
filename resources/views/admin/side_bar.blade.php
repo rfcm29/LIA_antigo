@@ -15,6 +15,18 @@
             <li class="nav-item">
                 <a href="/admin/kits">Kits</a>
             </li>
+            <li class="nav-item">
+                <a href="/admin/centroCustos">Centros de Custos</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/reservas">Reservas</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/users">Utilizadores</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/gestaoEspaco">Gestão de Espaços</a>
+            </li>
         </ul>
     </div>
   </nav>

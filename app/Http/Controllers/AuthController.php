@@ -36,7 +36,7 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect('admin.dashboard');
+        return redirect('/');
     }
 
     public function create(array $data)
