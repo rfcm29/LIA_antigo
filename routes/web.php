@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CentroCustos;
-use App\Http\Controllers\ItensController;
 use App\Http\Controllers\KitsController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\UsersController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,22 +24,16 @@ Route::get('/', function () {
     return view('user.menu');
 })->name('home');
 
-Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
-Route::post('/save', [AuthController::class, 'save'])->name('auth.save');
-Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
-Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Auth::routes();
+
 Route::get('/contactos', [AuthController::class, 'contactos'])->name('contactos');
-Route::get('/carrinho', [AuthController::class, 'carrinho'])->name('carrinho');
+Route::get('/carrinho', [AuthController::class, 'carrinho'])->middleware('auth')->name('carrinho');
 
-Route::get('/categoria/{categoria}', [KitsController::class, 'getKits']);
+Route::get('/categoria/{categoria}', [KitsController::class, 'getKits'])->middleware('auth');
 
-Route::get('/perfil/{id}', [PerfilController::class, 'index']);
+Route::get('/perfil/{id}', [PerfilController::class, 'index'])->middleware('auth');
 
 //usar grupos para limitar acesso a certas rotas
-
-Route::group(['middleware'=> ['AuthCheck']], function(){
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-});
 
 Route::group(['middleware'=> ['UserTypeCheck']], function () {
     Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
@@ -56,4 +50,9 @@ Route::group(['middleware'=> ['UserTypeCheck']], function () {
 
     //reservas
     Route::resource('admin/reservas', ReservasController::class);
+});
+
+
+Route::get('teste', function () {
+    return session()->all();
 });
