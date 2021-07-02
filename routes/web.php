@@ -33,6 +33,7 @@ Route::get('/contactos', [AuthController::class, 'contactos'])->name('contactos'
 Route::get('/carrinho', [Carrinho::class, 'showCarrinho'])->middleware('auth')->name('carrinho');
 
 Route::get('/categoria/{categoria}', [KitsController::class, 'getKits']);
+Route::get('/kit/{id}', [KitsController::class, 'showKit']);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/carrinho', [Carrinho::class, 'showCarrinho'])->name('carrinho');
