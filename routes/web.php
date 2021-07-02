@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Carrinho;
 use App\Http\Controllers\CentroCustos;
 use App\Http\Controllers\KitsController;
 use App\Http\Controllers\PerfilController;
@@ -27,9 +28,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/contactos', [AuthController::class, 'contactos'])->name('contactos');
-Route::get('/carrinho', [AuthController::class, 'carrinho'])->middleware('auth')->name('carrinho');
 
-Route::get('/categoria/{categoria}', [KitsController::class, 'getKits'])->middleware('auth');
+//ver carrinho
+Route::get('/carrinho', [Carrinho::class, 'showCarrinho'])->middleware('auth')->name('carrinho');
+
+Route::get('/categoria/{categoria}', [KitsController::class, 'getKits']);
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/carrinho', [Carrinho::class, 'showCarrinho'])->name('carrinho');
+    Route::post('/carrinho', [Carrinho::class, 'criaCarrinho'])->name('cria.carrinho');
+    Route::post('/cancelaReserva', [Carrinho::class, 'cancelaReserva'])->name('cancela.reserva');
+});
 
 Route::get('/perfil/{id}', [PerfilController::class, 'index'])->middleware('auth');
 

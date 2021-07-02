@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Itens;
 use App\Models\Kits;
-use EstadoKit;
 use Illuminate\Http\Request;
 
 class KitsController extends Controller
@@ -109,7 +108,7 @@ class KitsController extends Controller
         $kit = Kits::find($id);
         $categoria = Kits::find($id)->Categoria;
 
-        //return $itens;
+        //return $kit->itens;
         return view('admin.kits.show', ['kit' => $kit, 'kits' => $kits, 'itens' => $itens, 'categoria' => $categoria]);
     }
 
@@ -171,9 +170,25 @@ class KitsController extends Controller
     }
 
     public function getKits($categoria){
+
         $kits = Kits::where('categoria', $categoria)->get();
+        $kitsDisponiveis = collect();
+
+        if(session()->has('reserva')){
+            foreach ($kits as $kit) {
+                if($kit->reserva->isEmpty()){
+                    $kitsDisponiveis->push($kit);
+                }
+                else {
+                    if($kit->reserva->whereNotBetween('data_inicio', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])
+                                    ->whereNotBetween('data_fim', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])->isEmpty() ) {
+                        $kitsDisponiveis->push($kit);
+                    }
+                }
+            }
+            return $kitsDisponiveis;
+        }
 
         return view('user.categoria', ['kits' => $kits]);
     }
-
 }

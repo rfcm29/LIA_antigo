@@ -17,6 +17,12 @@
         </div>
     </div>
 
+    <br>
+    <form action="{{ route('cancela.reserva') }}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-primary">Cancelar reserva</button>
+    </form>
+
 </div>
 
 @endsection

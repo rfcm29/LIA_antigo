@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Kits extends Model
 {
@@ -59,5 +60,15 @@ class Kits extends Model
     public function Categoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria', 'id');
+    }
+
+    /**
+     * The reserva that belong to the Kits
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function reserva(): BelongsToMany
+    {
+        return $this->belongsToMany(Reserva::class, 'reserva_kit', 'id_kit', 'id_reserva');
     }
 }

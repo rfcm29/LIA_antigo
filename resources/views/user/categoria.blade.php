@@ -20,7 +20,7 @@
                 <h4 class="card-title">{{$kit->descricao}}</h4>
                 <p class="card-text">INFO DO PRODUTO</p>
                 <p class="card-text card-text-preco">{{$kit->preco}}€</p>
-                <button class="btn-info">VER DETALHES</button>
+                <button class="btn btn-primary">VER DETALHES</button>
             </div>
         </div>
         </div>
