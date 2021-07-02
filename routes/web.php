@@ -32,6 +32,7 @@ Route::get('/contactos', [AuthController::class, 'contactos'])->name('contactos'
 Route::get('/carrinho', [AuthController::class, 'carrinho'])->name('carrinho');
 
 Route::get('/categoria/{categoria}', [KitsController::class, 'getKits']);
+Route::get('/kit/{id}', [KitsController::class, 'showKit']);
 
 Route::get('/perfil/{id}', [PerfilController::class, 'index']);
 

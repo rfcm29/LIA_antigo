@@ -5,9 +5,18 @@
 <div class="contactos-container">
 
     <div class="left">
-        <h3>TELEMÓVEL</h3>
-        <br>
-        <h3>E-MAIL</h3>
+        <form action="mailto:franciscarocha@ipvc.pt?subject=Website Feedback" method="post" enctype="text/plain">
+        @csrf
+            <h3>Nome</h3>
+            <input type="text" name="nome" class="form-control"><br>
+            <h3>E-mail</h3>
+            <input type="text" name="mail" class="form-control"><br>
+            <h3>Mensagem</h3>
+            <textarea name="mensagem" cols="30" rows="6" class="form-control"></textarea>
+            <!--<input type="text" name="mensagem" size="50" class="form-control">-->
+            <br><br>
+            <input type="submit" value="Enviar" class="btn btn-primary">        
+        </form>
     </div>
 
     <div class="middle">

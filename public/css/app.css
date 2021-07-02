@@ -543,7 +543,9 @@ pre code {
 
 .contactos-container .left{
   width: 50%;
-  text-align: end;
+  text-align: start;
+  padding-left: 10%;
+
 }
 
 .contactos-container .middle{
@@ -614,22 +616,65 @@ pre code {
 
 .produto{
   display: flex;
-  background-color: var(--gray);
+  border-radius: 8px;
+  background-color: var(--blue);
   align-items: center;
 }
 
+.produto p{
+  margin: 0;
+  padding: 0;
+}
+
 .produto .left{
+  padding: 20px 10px;
   width: 60%;
+  color: white;
 }
 
 .produto .middle{
+  padding: 20px 10px;
   width: 20%;
-  color: var(--blue);
-  font-size: 24px;
+  color: white;
+  font-weight: bold;
 }
 
 .produto .right{
   width: 20%;
+  text-align: center;
+}
+
+.produto-container{
+  width: 90%;
+  display: flex;
+}
+
+.produto-container #btnAddProdReserva{
+  align-self:center;
+}
+
+.produto-container .left{
+  width: 40%;
+  padding: 10px;
+}
+
+.produto-container .right{
+  width: 60%;
+  padding: 10px;
+}
+
+.produto-container .right h3{
+  color: var(--blue);
+}
+
+.produto-container .right p{
+  margin: 0;
+  padding: 0;
+}
+
+.produto-container .right .bottom{
+  padding-right: 10%;
+  text-align: end;
 }
 
 .wrapper{
@@ -750,6 +795,13 @@ padding-top: 3%;
   }
 }
 .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.row-grid {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;

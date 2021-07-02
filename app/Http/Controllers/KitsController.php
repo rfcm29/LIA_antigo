@@ -176,4 +176,15 @@ class KitsController extends Controller
         return view('user.categoria', ['kits' => $kits]);
     }
 
+    public function showKit($id)
+    {
+        $kit = Kits::find($id);
+        $itens = Kits::find($id)->itens;
+        $kits = Kits::find($id)->kits;
+        $categoria = Kits::find($id)->Categoria;
+
+        //return $itens;
+        return view('user.produto', ['kit' => $kit, 'kits' => $kits, 'itens' => $itens, 'categoria' => $categoria]);
+    }
+
 }
