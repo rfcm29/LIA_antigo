@@ -6,11 +6,11 @@
     </ul>
   </div> -->
 
-  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <nav class="col-md-2 d-none d-md-block sidebar" id="sidebar_">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                  <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+                  <a href="{{ route('admin.home') }}">Dashboard</a>
             </li>
             <li class="nav-item">
                 <a href="/admin/kits">Kits</a>

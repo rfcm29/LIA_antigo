@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="d-flex flex-column">
     <h1>Criar Kit</h1>
     <br>
     <form action="{{ route('kits.store') }}" method="post">

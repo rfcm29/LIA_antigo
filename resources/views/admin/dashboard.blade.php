@@ -13,9 +13,11 @@
 </head>
 <body id="page-top">
 
+    @include('admin.navbar_admin')
+
     <!-- Page Wrapper -->
     <div id="wrapper">
-
+        
        @include('admin.side_bar')
 
         <!-- Content Wrapper -->

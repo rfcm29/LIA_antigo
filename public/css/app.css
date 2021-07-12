@@ -557,6 +557,17 @@ pre code {
   width: 40%;
 }
 
+.espaco-container{
+  display: flex;
+  margin-top: 10px;
+}
+
+.espaco-container #posto1, #posto2, #posto3, #posto4{
+  font-size: 200px;
+  margin-right: 5px;
+  color: var(--green);
+}
+
 .profile-container{
   width: 100%;
   background-color: var(--blue);
@@ -678,6 +689,44 @@ pre code {
   text-align: end;
 }
 
+.btn-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.kits-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.kits-container #img{
+  margin-right: 5px;
+}
+
+.kit-container{
+  width: 100%;
+  padding: 5px;
+  background: lightgray;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.kit-container p{
+  text-align: center;
+  margin: 0;
+}
+
+.kit-container img{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .wrapper{
 padding-top: 3%;
 }
@@ -718,6 +767,10 @@ padding-top: 3%;
     box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
 }
 
+#sidebar_{
+  background: var(--blue);
+}
+
 .sidebar-sticky {
     position: relative;
     top: 0;
@@ -725,6 +778,26 @@ padding-top: 3%;
     padding-top: .5rem;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.sidebar-sticky .nav-item{
+  text-align: center;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.sidebar-sticky .nav-item a{
+  color: white;
+}
+
+.sidebar-sticky .nav-item:hover{
+  background: var(--cyan);
+  border-radius: 5px;
+}
+
+.sidebar-sticky .nav-item a:hover{
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .sidebar-nav{
@@ -4656,6 +4729,8 @@ input[type=button].btn-block {
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  text-align: center;
+  color: var(--blue);
 }
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -5300,8 +5375,10 @@ a.badge-dark:focus, a.badge-dark.focus {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  border: none;
+  margin: 2px;
+  background: var(--cyan);
 }
 .list-group-item:first-child {
   border-top-left-radius: inherit;
