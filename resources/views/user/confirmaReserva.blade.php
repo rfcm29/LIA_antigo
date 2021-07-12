@@ -4,7 +4,11 @@
 
 <div class="container">
 
-    teste
+    session()->get('reserva.user')
+
+    @foreach (session()->get('reserva.kits') as $kit)
+
+    @endforeach
 
 </div>
 
