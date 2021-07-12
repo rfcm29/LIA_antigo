@@ -26,42 +26,15 @@
 
                 @if (Auth::user()->isAdmin())
                     <li class="nav-item">
-                        <a href="{{ route('admin.dashboard') }}" class="nav-link">ADMIN</a>
+                        <a href="{{ route('admin.home') }}" class="nav-link">ADMIN</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('user.espaco') }}" class="nav-link">ESPAÇO.LIA</a>
                     </li>
                 @endif
             @endguest
 
-
-
-
-
-
-        <!--
-        @if(Auth::check())
-            <li class="nav-item">
-                <a href="/perfil/{{Auth::user()->id}}" class="nav-link">Olá, {{Auth::user()->name}}</a>
-            </li>
-
-            <li class="nav-item">
-                <div class="nav-link"><a href="{{ route('carrinho') }}" class="fa fa-shopping-cart"></a></div>
-
-            </li>
-
-            <li class="nav-item">
-                <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                </form>
-            </li>
-        @else
-        <li class="nav-item">
-            <a href="{{ route('login') }}" class="nav-link">LOGIN</a>
-        </li>
-        @endif
-    -->
         </ul>
 </div>
 

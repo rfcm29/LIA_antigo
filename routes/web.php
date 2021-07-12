@@ -63,6 +63,14 @@ Route::group(['middleware'=> ['UserTypeCheck']], function () {
 
     //reservas
     Route::resource('admin/reservas', ReservasController::class);
+
+    Route::get('/admin/home', function(){
+        return view('admin.home');
+    })->name('admin.home');
+
+    Route::get('user/espaco', function(){
+        return view('espaco');
+    })->name('user.espaco');
 });
 
 

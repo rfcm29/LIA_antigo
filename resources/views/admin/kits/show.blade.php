@@ -4,13 +4,19 @@
     <div class="container">
         <h1> {{ $kit->descricao }}</h1>
 
-        <ul class="list-group">
-            <li class="list-group-item">Código LIA: {{ $kit->lia_code }}</li>
-            <li class="list-group-item">Categoria: {{ $categoria->descricao }}</li>
-            <li class="list-group-item">Preço: {{ $kit->preco }}€</li>
-            <li class="list-group-item">Referência IPVC: {{ $kit->ref_ipvc }}</li>
-            <li class="list-group-item">Observações: {{ $kit->observacoes }}</li>
-        </ul>
+        <div class="kits-container">
+            <img id="img" src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80" height="250px">
+
+            <ul class="list-group">
+                <li class="list-group-item">Código LIA: {{ $kit->lia_code }}</li>
+                <li class="list-group-item">Categoria: {{ $categoria->descricao }}</li>
+                <li class="list-group-item">Preço: {{ $kit->preco }}€</li>
+                <li class="list-group-item">Referência IPVC: {{ $kit->ref_ipvc }}</li>
+                <li class="list-group-item">Observações: {{ $kit->observacoes }}</li>
+            </ul>
+
+        </div>
+        
 
         <br>
 
@@ -66,11 +72,14 @@
             </div>
         @endisset
 
-        <a class="btn btn-primary" href="/admin/kits/{{$kit->id}}/edit" role="button">Editar</a>
-        <form action="{{route('kits.destroy', $kit->id)}}" method="post">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-        </form>
+        <div class="btn-container">
+            <a class="btn btn-primary" href="/admin/kits/{{$kit->id}}/edit" role="button">Editar</a>
+            <form action="{{route('kits.destroy', $kit->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+        </div>
+        
     </div>
 @endsection
