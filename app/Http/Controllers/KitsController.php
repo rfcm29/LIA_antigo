@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Itens;
 use App\Models\Kits;
+use App\Models\Reserva;
 use Illuminate\Http\Request;
 
 class KitsController extends Controller
@@ -176,17 +177,30 @@ class KitsController extends Controller
 
         if(session()->has('reserva')){
             foreach ($kits as $kit) {
+
                 if($kit->reserva->isEmpty()){
                     $kitsDisponiveis->push($kit);
-                }
-                else {
-                    if($kit->reserva->whereNotBetween('data_inicio', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])
-                                    ->whereNotBetween('data_fim', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])->isEmpty() ) {
+                } else{
+                    $reservas = Reserva::whereBetween('data_inicio', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])
+                                        ->orWhereBetween('data_fim', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])->get();
+                    if($reservas->isNotEmpty()){
+                        foreach($reservas as $reserva){
+                            $kitDisponivel = true;
+                            foreach($kit->reserva as $reservaKit){
+                                if($reserva->id == $reservaKit->id){
+                                    $kitDisponivel = false;
+                                }
+                            }
+                            if($kitDisponivel){
+                                $kitsDisponiveis->push($kit);
+                            }
+                        }
+                    }else {
                         $kitsDisponiveis->push($kit);
                     }
                 }
             }
-            return $kitsDisponiveis;
+            return view('user.categoria', ['kits' => $kitsDisponiveis]);
         }
 
         return view('user.categoria', ['kits' => $kits]);

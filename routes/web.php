@@ -39,6 +39,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/carrinho', [Carrinho::class, 'showCarrinho'])->name('carrinho');
     Route::post('/carrinho', [Carrinho::class, 'criaCarrinho'])->name('cria.carrinho');
     Route::post('/cancelaReserva', [Carrinho::class, 'cancelaReserva'])->name('cancela.reserva');
+    Route::post('/addCarrinho/{id}', [Carrinho::class, 'adicionaItem']);
+    Route::post('/removeKit/{id}', [Carrinho::class, 'removeKit'])->name('removeKit');
+    Route::get('/confirmarReserva', function() { return view('user.confirmaReserva'); });
 });
 
 Route::get('/perfil/{id}', [PerfilController::class, 'index'])->middleware('auth');

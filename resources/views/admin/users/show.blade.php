@@ -11,7 +11,7 @@
                 Email: {{ $user->email }}
             </li>
             <li class="list-group-item">
-                Tipo de Utilizador: {{ $user->user_type }}
+                Tipo de Utilizador: {{ $userType->descricao }}
             </li>
             <li class="list-group-item">
                 Telefone: {{ $user->telefone }}

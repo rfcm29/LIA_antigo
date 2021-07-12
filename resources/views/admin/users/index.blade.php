@@ -19,7 +19,11 @@
                 <tr>
                     <td scope="row">{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $userType->user_type }}</td>
+                    @foreach ($userType as $type)
+                        @if ($type->id == $user->user_type)
+                            <td>{{ $type->descricao }}</td>
+                        @endif
+                    @endforeach
                     <th>
                         <a href="/admin/users/{{ $user->id }}" class="btn btn-outline-primary">Ver</a>
                     </th>

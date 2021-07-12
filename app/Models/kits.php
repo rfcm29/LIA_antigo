@@ -69,6 +69,6 @@ class Kits extends Model
      */
     public function reserva(): BelongsToMany
     {
-        return $this->belongsToMany(Reserva::class, 'reserva_kit', 'id_kit', 'id_reserva');
+        return $this->belongsToMany(Reserva::class, 'reserva_kits', 'id_kit', 'id_reserva');
     }
 }
