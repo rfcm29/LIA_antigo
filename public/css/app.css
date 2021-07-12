@@ -568,6 +568,10 @@ pre code {
   color: var(--green);
 }
 
+.espaco-container .posto{
+  text-align: center;
+}
+
 .profile-container{
   width: 100%;
   background-color: var(--blue);
@@ -626,9 +630,36 @@ pre code {
   opacity: 1;
 }
 
+.reserva-h2{
+  color: var(--blue);
+}
+
+.reserva-container{
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+.img-reserva img{
+  height: 100px;
+}
+
+.items-reserva{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+#btnReservar{
+  position: absolute;
+  right: 20%;
+}
+
 .produto{
   display: flex;
   border-radius: 8px;
+  margin-bottom: 10px;
   background-color: var(--blue);
   align-items: center;
 }
@@ -692,6 +723,10 @@ pre code {
 .btn-container{
   display: flex;
   flex-direction: row;
+}
+
+#btnConcluirReserva{
+  margin-left: 10px;
 }
 
 .kits-container{

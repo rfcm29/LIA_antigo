@@ -46,7 +46,7 @@
 <div class="container">
 
     <a href="{{ route('home') }}">
-        <img src="images/logo_1.png" width="30%">
+        <img src="{{url('/images/logo_1.png')}}" width="30%">
     </a>
 
     <form action="">

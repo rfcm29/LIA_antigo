@@ -42,7 +42,7 @@
 
     <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="images/logo_1.png" width="90">
+            <img src="{{url('/images/logo_1.png')}}" width="90">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHome" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
