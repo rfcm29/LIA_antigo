@@ -53,8 +53,10 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $userType = User_type::find($user->user_type);
 
-        return view('admin/users/show', ['user' => $user]);
+
+        return view('admin/users/show', ['user' => $user, 'userType' => $userType]);
     }
 
     /**

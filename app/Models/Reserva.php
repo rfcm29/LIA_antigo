@@ -10,6 +10,8 @@ class Reserva extends Model
 {
     use HasFactory;
 
+    protected $table = 'reservas';
+
     protected $fillable = [
         'user',
         'data_inicio',

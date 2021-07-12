@@ -23,13 +23,20 @@
 
                     @endforeach
 
-                @endisset   
+                @endisset
             </div>
 
+            @if (session()->has('reserva'))
             <div class="bottom">
-                <button id="btnAddProdReserva" class="btn btn-primary">ADICIONAR À RESERVA</button>
+                <form action="/addCarrinho/{{ $kit->id }}" method="post">
+                    @csrf
+                    <button type="send" id="btnAddProdReserva" class="btn btn-primary">ADICIONAR À RESERVA</button>
+                </form>
+                @if ($errors->any())
+                    <h4>{{ $errors->first() }}</h4>
+                @endif
             </div>
-            
+            @endif
         </div>
     </div>
 
