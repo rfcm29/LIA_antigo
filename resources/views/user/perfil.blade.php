@@ -52,17 +52,17 @@
     <form action="">
         @csrf
         <h3>Nome</h3>
-        <input type="text" id="nome" name="nome" value="{{$user->name}}" class="form-control"><br><br>
+        <input type="text" id="nome" name="nome" value="{{$user->name}}" class="form-control">
         <h3>Email</h3>
-        <input type="text" id="email" name="email" value="{{$user->email}}" class="form-control"><br><br>
+        <input type="text" id="email" name="email" value="{{$user->email}}" class="form-control">
         <h3>Password</h3>
-        <input type="password" class="form-control" name="password" placeholder="Enter password" class="form-control"><br><br>
+        <input type="password" class="form-control" name="password" placeholder="Enter password" class="form-control">
         <h3>Confirmar Password</h3>
-        <input type="password" class="form-control" name="password" placeholder="Enter password" class="form-control"><br><br>
+        <input type="password" class="form-control" name="password" placeholder="Enter password" class="form-control">
         <h3>Telemóvel</h3>
-        <input type="text" id="telemovel" name="telemovel" value="{{$user->telefone}}" class="form-control"><br><br>
+        <input type="text" id="telemovel" name="telemovel" value="{{$user->telefone}}" class="form-control">
         <h3>Centro de Custos</h3>
-        <input type="text" id="centro_custos" name="centro_custos" class="form-control"><br><br>
+        <select id="centro_custos" name="centro_custos" class="form-control">
         <input type="submit" value="ALTERAR" class="btn btn-primary">
     </form>
 

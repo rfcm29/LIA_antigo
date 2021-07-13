@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LIA</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link href = https://code.jquery.com/git/ui/jquery-ui-git.css
-         rel = "stylesheet">
+    <link href = https://code.jquery.com/git/ui/jquery-ui-git.css rel = "stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>

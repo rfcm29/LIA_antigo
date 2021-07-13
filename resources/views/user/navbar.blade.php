@@ -45,34 +45,34 @@
             <img src="{{url('/images/logo_1.png')}}" width="90">
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHome" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" >
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse text-center" id="navbarHome">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/categoria/1">CÂMARAS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categoria/2">LENTES</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categoria/3">ILUMINAÇÃO</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categoria/4">AUDIO</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categoria/5">TRIPÉS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categoria/6">ACESSÓRIOS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link-c" href="{{ route('contactos') }}">CONTACTOS</a>
-                </li>
-            </ul>
-        </div>
+            <div class="collapse navbar-collapse text-center" id="navbarToggler">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categoria/1">CÂMARAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categoria/2">LENTES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categoria/3">ILUMINAÇÃO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categoria/4">AUDIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categoria/5">TRIPÉS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categoria/6">ACESSÓRIOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-c" href="{{ route('contactos') }}">CONTACTOS</a>
+                    </li>
+                </ul>
+            </div>   
     </div>
 </nav>
