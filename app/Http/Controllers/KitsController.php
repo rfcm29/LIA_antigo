@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\estado_reserva;
 use App\Models\Itens;
 use App\Models\Kits;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class KitsController extends Controller
 {
@@ -104,13 +106,14 @@ class KitsController extends Controller
      */
     public function show($id)
     {
-        $itens = Kits::find($id)->itens;
-        $kits = Kits::find($id)->kits;
         $kit = Kits::find($id);
-        $categoria = Kits::find($id)->Categoria;
+        $kit->kits;
+        $kit->itens;
+        $kit->Estado_kit;
+        $kit->Categoria;
 
         //return $kit->itens;
-        return view('admin.kits.show', ['kit' => $kit, 'kits' => $kits, 'itens' => $itens, 'categoria' => $categoria]);
+        return view('admin.kits.show', ['kit' => $kit]);
     }
 
     /**
@@ -121,13 +124,14 @@ class KitsController extends Controller
      */
     public function edit($id)
     {
-        $itens = Kits::find($id)->itens;
-        $kits = Kits::find($id)->kits;
         $kit = Kits::find($id);
-        $categoria = Kits::find($id)->Categoria;
+        $kit->kits;
+        $kit->itens;
+        $kit->Estado_kit;
+        $kit->Categoria;
+        $categorias = Categoria::all();
 
-        //return $itens;
-        return view('admin.kits.edit', ['kit' => $kit, 'kits' => $kits, 'itens' => $itens, 'categoria' => $categoria]);
+        return view('admin.kits.edit', ['kit' => $kit, "categorias" => $categorias]);
     }
 
     /**
@@ -139,7 +143,102 @@ class KitsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $kit = Kits::find($id);
+        $itens = $kit->itens;
+        $kits = $kit->kits;
 
+        request()->validate([
+            'descricao' =>'required',
+            'preco' => 'required',
+            'categoria' => 'required'
+        ]);
+
+        //editar ou eliminar items do kit
+        foreach($itens as $item){
+            if($request->editarItens){
+                $request->validate([
+                    'editarItens.*.descricao' => 'required'
+                ]);
+            $eliminarItem = true;
+                foreach($request->editarItens as $key => $editarItem){
+                    if($item->id == $key){
+                        $eliminarItem = false;
+                        $item->update([
+                            'descricao' => $editarItem['descricao'],
+                            'modelo' => $editarItem['modelo'],
+                            'serial_number' => $editarItem['serial_number'],
+                            'ref_ipvc' => $editarItem['ref_ipvc']
+                        ]);
+                        $item->save();
+                    }
+                }
+                if($eliminarItem){
+                    $item->delete();
+                }
+            } else {
+                $item->delete();
+            }
+        }
+
+        //editar ou eliminar kits do kit
+        foreach($kits as $kitUpdate){
+            if($request->editarKits){
+                $request->validate([
+                    'editarKits.*' => 'required|exists:kits,lia_code'
+                ]);
+                $removerKit = true;
+                foreach($request->editarKits as $key => $editarKit){
+                    if($kitUpdate->id == $key){
+                        $removerKit = false;
+                    }
+                }
+                if($removerKit){
+                    $kitUpdate->id_kit = null;
+                    $kitUpdate->save();
+                }
+            } else {
+                $kitUpdate->id_kit = null;
+                $kitUpdate->save();
+            }
+        }
+
+        if($request->itens || $request->kits){
+            $request->validate([
+                'itens.*.descricao' => 'required',
+                'kits.*' => 'required|exists:kits,lia_code'
+            ]);
+
+            if($request->itens){
+                foreach ($request->itens as $item) {
+                    Itens::create([
+                        'descricao' => $item['descricao'],
+                        'modelo' => $item['modelo'],
+                        'serial_number' => $item['serial_number'],
+                        'ref_ipvc' => $item['ref_ipvc'],
+                        'id_kit' => $id
+                    ]);
+                }
+            }
+
+            if($request->kits){
+                foreach ($request->kits as $_item) {
+                    $data = Kits::where('lia_code', $_item)->first();
+                    $data->id_kit = $id;
+                    $data->save();
+                }
+            }
+        }
+
+        $kit->update([
+            'descricao' => $request->descricao,
+            'categoria' => $request->categoria,
+            'preco' => $request->preco
+        ]);
+        $kit->save();
+
+        //return $request;
+
+        return redirect('/admin/kits/' . $id);
     }
 
     /**

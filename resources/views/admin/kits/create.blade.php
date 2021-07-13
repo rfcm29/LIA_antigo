@@ -32,12 +32,16 @@
             <label for="preco">Preço</label>
             <input type="text" name="preco" id="preco" class="form-control">
         </div>
+
+        <h1>Itens</h1>
+        <input type="button" class="addItem btn btn-primary" value="Adicionar Item">
+        <input type="button" class="addKit btn btn-primary" value="Adicionar Kit">
+
         <table id="tableItem" class="table">
-            <h1>Itens</h1>
-            <thead>
-                <input type="button" class="addItem btn btn-primary" value="Adicionar Item">
-                <input type="button" class="addKit btn btn-primary" value="Adicionar Kit">
-            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <table id="tableKit" class="table">
             <tbody>
             </tbody>
         </table>
@@ -62,6 +66,9 @@
                         '<td><label for="itens">Referencia IPVC</label>'+
                         '<input type="text" name="itens['+i+'][ref_ipvc]" class="form-control">'+
                     '</td>'+
+                    '<td>' +
+                        '<input type="button" class="btn btn-danger" value="Remover" onclick="deleteRow(this)">' +
+                    '</td>'+
                 "</tr>";
             $("#tableItem tbody").append(markup);
         });
@@ -72,8 +79,11 @@
                         '<label for="kits">Código Kit</label>'+
                         '<input type="text" name="kits[]" class="kit form-control">'+
                     '</td>'+
+                    '<td>' +
+                        '<input type="button" class="btn btn-danger" value="Remover" onclick="deleteRow(this)">' +
+                    '</td>'+
                 "</tr>";
-            $("#tableItem tbody").append(markup);
+            $("#tableKit tbody").append(markup);
         });
         $(document).on('DOMSubtreeModified', function (e) {
         const kits = document.getElementsByClassName("kit");

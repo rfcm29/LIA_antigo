@@ -71,4 +71,14 @@ class Kits extends Model
     {
         return $this->belongsToMany(Reserva::class, 'reserva_kits', 'id_kit', 'id_reserva');
     }
+
+    /**
+     * Get the estadoKit that owns the Kits
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Estado_kit(): BelongsTo
+    {
+        return $this->belongsTo(EstadoKit::class, 'estado_kit', 'id');
+    }
 }

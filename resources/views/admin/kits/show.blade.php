@@ -9,18 +9,18 @@
 
             <ul class="list-group">
                 <li class="list-group-item">Código LIA: {{ $kit->lia_code }}</li>
-                <li class="list-group-item">Categoria: {{ $categoria->descricao }}</li>
+                <li class="list-group-item">Categoria: {{ $kit->Categoria->descricao }}</li>
                 <li class="list-group-item">Preço: {{ $kit->preco }}€</li>
                 <li class="list-group-item">Referência IPVC: {{ $kit->ref_ipvc }}</li>
                 <li class="list-group-item">Observações: {{ $kit->observacoes }}</li>
             </ul>
 
         </div>
-        
+
 
         <br>
 
-        @isset($itens[0])
+        @isset($kit->itens[0])
             <div class="row">
                 <h2>Itens</h2>
                 <table class="table">
@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                       @foreach ($itens as $item)
+                       @foreach ($kit->itens as $item)
                             <tr>
                                 <td scope="row">{{ $item->descricao }}</td>
                                 <td>{{ $item->modelo }}</td>
@@ -46,7 +46,7 @@
             </div>
         @endisset
 
-        @isset($kits[0])
+        @isset($kit->kits[0])
             <div>
                 <h2>Kits</h2>
                 <table class="table">
@@ -59,7 +59,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($kits as $item)
+                        @foreach ($kit->kits as $item)
                             <tr>
                                 <td scope="row">{{ $item->descricao }}</td>
                                 <td>{{ $item->lia_code }}</td>
@@ -80,6 +80,6 @@
                 <button type="submit" class="btn btn-danger">Eliminar</button>
             </form>
         </div>
-        
+
     </div>
 @endsection

@@ -15,6 +15,14 @@ class ReservasController extends Controller
     public function index()
     {
         $reservas = Reserva::all();
+        foreach($reservas as $reserva){
+            $reserva->kits;
+            $reserva->getUser;
+            $reserva->estadoReserva;
+        }
+
+
+        //return $reservas;
 
         return view('admin.reservas.index', ['reservas' => $reservas]);
     }
@@ -48,7 +56,14 @@ class ReservasController extends Controller
      */
     public function show($id)
     {
-        //
+        $reserva = Reserva::find($id);
+        $reserva->kits;
+        $reserva->getUser;
+        $reserva->estadoReserva;
+
+        //return $reserva;
+
+        return view('admin.reservas.show', ['reserva' => $reserva]);
     }
 
     /**
