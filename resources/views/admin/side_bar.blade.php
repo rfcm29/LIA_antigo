@@ -1,11 +1,3 @@
-<!-- <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-      <li><a href="/admin/itens">Items</a></li>
-      <li><a href="#">Kits</a></li>
-    </ul>
-  </div> -->
-
   <nav class="col-md-2 d-none d-md-block sidebar" id="sidebar_">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">

@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="middle">
-                    <p>{{ $kit->preco }}</p>
+                    <p>{{ $kit->preco }}€</p>
                 </div>
 
                 <div class="right">
@@ -29,11 +29,16 @@
 
 
     <br>
-    <form action="{{ route('cancela.reserva') }}" method="post">
-        @csrf
-        <button type="submit" class="btn btn-primary">Cancelar reserva</button>
-    </form>
-    <a href="/confirmarReserva" class="btn btn-primary">Concluir Reserva</a>
+    <div class="btn-container">
+
+        <form action="{{ route('cancela.reserva') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-danger">CANCELAR RESERVA</button>
+        </form>
+        <a href="/confirmarReserva" class="btn btn-primary" id="btnConcluirReserva">CONCLUIR RESERVA</a>
+
+    </div>
+    
 
 </div>
 
