@@ -1,28 +1,27 @@
 <div class="profile-container">
-        <ul class="nav justify-content-end">
-            @guest
-                <li class="nav-item">
-                    <a href="{{ route('login') }}" class="nav-link">LOGIN</a>
-                </li>
-            @else
-                <li class="nav-item">
-                    <a href="/perfil/{{Auth::user()->id}}" class="nav-link">Olá, {{Auth::user()->name}}</a>
-                </li>
+    <ul class="nav justify-content-start">
 
-                <li class="nav-item">
-                    <div class="nav-link"><a href="{{ route('carrinho') }}" class="fa fa-shopping-cart"></a></div>
+    </ul>
 
-                </li>
+    <ul class="nav justify-content-end">
+        @guest
+            <li class="nav-item">
+                <a href="{{ route('login') }}" class="nav-link">LOGIN</a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a href="/perfil/{{Auth::user()->id}}" class="nav-link">Olá, {{Auth::user()->name}}</a>
+            </li>
 
-                <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
+            <li class="nav-item">
+                <div class="nav-link"><a href="{{ route('carrinho') }}" class="bx bxs-cart"></a></div>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                    </form>
-                </li>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
 
                 @if (Auth::user()->isAdmin())
                     <li class="nav-item">
@@ -36,7 +35,7 @@
                 @endif
             @endguest
 
-        </ul>
+    </ul>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" data-toggle="affix">
