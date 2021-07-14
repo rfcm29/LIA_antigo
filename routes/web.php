@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/addCarrinho/{id}', [Carrinho::class, 'adicionaItem']);
     Route::post('/removeKit/{id}', [Carrinho::class, 'removeKit'])->name('removeKit');
     Route::get('/confirmarReserva', function() { return view('user.confirmaReserva'); });
+    Route::post('/confirmaReserva', [Carrinho::class, 'confirmaReserva']);
 });
 
 Route::get('/perfil/{id}', [PerfilController::class, 'index'])->middleware('auth');

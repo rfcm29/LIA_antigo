@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kits;
+use App\Models\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,8 @@ class Carrinho extends Controller
             "user" => Auth::id(),
             "dataInicio" => $request->dataInicio,
             "dataFim" => $request->dataFim,
-            "descricao" => $request->descricao
+            "descricao" => $request->descricao,
+            "custo" => 0
         ];
 
         session()->put('reserva', $reserva);
@@ -46,6 +48,8 @@ class Carrinho extends Controller
     public function adicionaItem($id){
         $kit = Kits::find($id);
 
+        $totalCusto = session()->get('reserva.custo');
+
         if(session()->has('reserva.kits')){
             $kitExiste = false;
             foreach(session()->get('reserva.kits') as $kitControl){
@@ -55,6 +59,8 @@ class Carrinho extends Controller
             }
             if($kitExiste == false){
                 session()->push('reserva.kits', $kit);
+                $totalCusto += $kit->preco;
+                session()->put('reserva.custo', $totalCusto);
             }
             else{
                 return back()->withErrors(['Item já adicionado']);
@@ -62,6 +68,8 @@ class Carrinho extends Controller
         }
         else {
             session()->push('reserva.kits', $kit);
+            $totalCusto += $kit->preco;
+            session()->put('reserva.custo', $totalCusto);
         }
 
         return back();
@@ -79,5 +87,26 @@ class Carrinho extends Controller
         }
 
         return back();
+    }
+
+    public function confirmaReserva(){
+        $kits = session()->get('reserva.kits');
+
+        $reserva = Reserva::create([
+            'descricao' => session()->get('reserva.descricao'),
+            'user' => session()->get('reserva.user'),
+            'data_inicio' => session()->get('reserva.dataInicio'),
+            'data_fim' => session()->get('reserva.dataFim'),
+            'custo' => session()->get('reserva.custo'),
+            'estado' => 1
+        ]);
+
+        foreach($kits as $kit){
+            $reserva->kits()->attach($kit->id);
+        }
+
+        session()->forget('reserva');
+
+        return redirect('/');
     }
 }

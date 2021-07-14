@@ -14,17 +14,23 @@ class ReservasController extends Controller
      */
     public function index()
     {
-        $reservas = Reserva::all();
+        $reservasPendentes = Reserva::where('estado', 1)->get();
+        foreach($reservasPendentes as $reserva){
+            $reserva->kits;
+            $reserva->getUser;
+            $reserva->estadoReserva;
+        }
+
+        $reservas = Reserva::where('estado', '<>', 1)->get();
         foreach($reservas as $reserva){
             $reserva->kits;
             $reserva->getUser;
             $reserva->estadoReserva;
         }
 
-
         //return $reservas;
 
-        return view('admin.reservas.index', ['reservas' => $reservas]);
+        return view('admin.reservas.index', ['reservasPendentes' => $reservasPendentes, 'reservas' => $reservas]);
     }
 
     /**
@@ -86,7 +92,11 @@ class ReservasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reserva = Reserva::find($id);
+        $reserva->estado = 2;
+        $reserva->save();
+
+        return redirect('/admin/reservas');
     }
 
     /**
@@ -97,6 +107,10 @@ class ReservasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reserva = Reserva::find($id);
+        $reserva->estado = 3;
+        $reserva->save();
+
+        return redirect('/admin/reservas');
     }
 }

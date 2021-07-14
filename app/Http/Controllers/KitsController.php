@@ -281,12 +281,16 @@ class KitsController extends Controller
                     $kitsDisponiveis->push($kit);
                 } else{
                     $reservas = Reserva::whereBetween('data_inicio', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])
-                                        ->orWhereBetween('data_fim', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])->get();
+                                        ->orWhereBetween('data_fim', [session()->get('reserva.dataInicio'), session()->get('reserva.dataFim')])
+                                        ->orWhere([
+                                            ['data_inicio', '<=', session()->get('reserva.dataInicio')],
+                                            ['data_fim', '>=', session()->get('reserva.dataFim')]
+                                        ])->get();
                     if($reservas->isNotEmpty()){
                         foreach($reservas as $reserva){
                             $kitDisponivel = true;
                             foreach($kit->reserva as $reservaKit){
-                                if($reserva->id == $reservaKit->id){
+                                if($reserva->id == $reservaKit->id && ($reserva->estado == 1 || $reserva->estado == 2 || $reserva->estado == 4)){
                                     $kitDisponivel = false;
                                 }
                             }

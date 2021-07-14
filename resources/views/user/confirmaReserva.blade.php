@@ -4,20 +4,13 @@
 
 <div class="container">
 
-<<<<<<< HEAD
-    session()->get('reserva.user')
-
-    @foreach (session()->get('reserva.kits') as $kit)
-
-    @endforeach
-=======
-    <h2 class="reserva-h2">Reserva</h2>    
+    <h2 class="reserva-h2">Reserva</h2>
     <p>{{session()->get('reserva.descricao')}}</p>
 
-    <h2 class="reserva-h2">Data Início</h2>    
+    <h2 class="reserva-h2">Data Início</h2>
     <p>{{session()->get('reserva.dataInicio')}}</p>
 
-    <h2 class="reserva-h2">Data Fim</h2>    
+    <h2 class="reserva-h2">Data Fim</h2>
     <p>{{session()->get('reserva.dataFim')}}</p>
 
     <h2 class="reserva-h2">Produtos Adicionados</h2>
@@ -31,11 +24,13 @@
             <h4>{{$kit->descricao}}</h4>
             <h5>Preço: {{$kit->preco}}</h5>
         </div>
-    </div>            
+    </div>
     @endforeach
 
-    <button id="btnReservar" class="btn btn-primary">CONFIRMAR</button>
->>>>>>> 0dbff73577eb774166f9b8bf03ab5fcd0ff335da
+    <form action="/confirmaReserva" method="post">
+        @csrf
+        <button id="btnReservar" class="btn btn-primary">CONFIRMAR</button>
+    </form>
 
 </div>
 
