@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EspacoLia;
 use Illuminate\Http\Request;
 
-class EspacoLiaController extends Controller
+class espaco_lia extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class EspacoLiaController extends Controller
      */
     public function index()
     {
-        $espacos = EspacoLia::all();;
-
-        return view('admin.espacoLia.index', ['espacos' => $espacos]);
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class EspacoLiaController extends Controller
      */
     public function create()
     {
-        return view('admin.espacoLia.create');
+        //
     }
 
     /**
@@ -48,10 +45,7 @@ class EspacoLiaController extends Controller
      */
     public function show($id)
     {
-        $espaco = EspacoLia::find($id);
-        $espaco->ItemsEspaco;
-
-        return view('admin.espaco.show', ['espaco' => $espaco]);
+        //
     }
 
     /**
@@ -62,10 +56,7 @@ class EspacoLiaController extends Controller
      */
     public function edit($id)
     {
-        $espaco = EspacoLia::find($id);
-        $espaco->ItemsEspaco;
-
-        return view('admin.espaco.edit', ['espaco' => $espaco]);
+        //
     }
 
     /**

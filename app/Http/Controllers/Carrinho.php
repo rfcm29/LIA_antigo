@@ -11,10 +11,10 @@ class Carrinho extends Controller
 {
     public function showCarrinho() {
         if(session()->has('reserva')){
-            return view('user.carrinho');
+            return view('user.carrinho.carrinho');
         }
         else{
-            return view('user.criarCarrinho');
+            return view('user.carrinho.criarCarrinho');
         }
     }
 
@@ -36,7 +36,7 @@ class Carrinho extends Controller
 
         session()->put('reserva', $reserva);
 
-        return view('user.carrinho');
+        return view('user.carrinho.carrinho');
     }
 
     public function cancelaReserva() {

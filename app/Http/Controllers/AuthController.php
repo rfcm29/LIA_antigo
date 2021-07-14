@@ -13,11 +13,4 @@ class AuthController extends Controller
     function contactos(){
         return view('user.contactos');
     }
-
-    function carrinho(){
-        return view('user.carrinho');
-    }
-    function dashboard(){
-        return view('admin.dashboard');
-    }
 }

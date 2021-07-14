@@ -28,9 +28,10 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.home') }}" class="nav-link">ADMIN</a>
                     </li>
-
+                @endif
+                @if (Auth::user()->user_type == 2 || Auth::user()->isAdmin())
                     <li class="nav-item">
-                        <a href="{{ route('user.espaco') }}" class="nav-link">ESPAÇO.LIA</a>
+                        <a href="/reservarEspaco" class="nav-link">ESPAÇO.LIA</a>
                     </li>
                 @endif
             @endguest
@@ -73,6 +74,6 @@
                         <a class="nav-link-c" href="{{ route('contactos') }}">CONTACTOS</a>
                     </li>
                 </ul>
-            </div>   
+            </div>
     </div>
 </nav>

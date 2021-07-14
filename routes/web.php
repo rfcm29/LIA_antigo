@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Carrinho;
+use App\Http\Controllers\CarrinhoEspacoController;
 use App\Http\Controllers\CentroCustos;
+use App\Http\Controllers\EspacoLiaController;
 use App\Http\Controllers\KitsController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\ReservarEspacoController;
 use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\UsersController;
+use App\Models\ReservarEspaco;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +53,10 @@ Route::get('/perfil/{id}', [PerfilController::class, 'index'])->middleware('auth
 
 //usar grupos para limitar acesso a certas rotas
 
+Route::group(['middleware' => ['UserTypeCheck']], function () {
+    Route::get('/reservarEspaco', [CarrinhoEspacoController::class, 'index']);
+});
+
 Route::group(['middleware'=> ['UserTypeCheck']], function () {
     Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
 
@@ -65,13 +73,15 @@ Route::group(['middleware'=> ['UserTypeCheck']], function () {
     //reservas
     Route::resource('admin/reservas', ReservasController::class);
 
+    //espacos LIA
+    Route::resource('admin/espacoLia', EspacoLiaController::class);
+
+    //reservas do espaco LIA
+    Route::resource('admin/reservaEspaco', ReservarEspacoController::class);
+
     Route::get('/admin/home', function(){
         return view('admin.home');
     })->name('admin.home');
-
-    Route::get('user/espaco', function(){
-        return view('espaco');
-    })->name('user.espaco');
 });
 
 

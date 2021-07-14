@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EspacoLia;
+use App\Models\ReservarEspaco;
 use Illuminate\Http\Request;
 
-class EspacoLiaController extends Controller
+class ReservarEspacoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class EspacoLiaController extends Controller
      */
     public function index()
     {
-        $espacos = EspacoLia::all();;
-
-        return view('admin.espacoLia.index', ['espacos' => $espacos]);
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class EspacoLiaController extends Controller
      */
     public function create()
     {
-        return view('admin.espacoLia.create');
+        //
     }
 
     /**
@@ -43,36 +41,30 @@ class EspacoLiaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ReservarEspaco  $reservarEspaco
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $espaco = EspacoLia::find($id);
-        $espaco->ItemsEspaco;
-
-        return view('admin.espaco.show', ['espaco' => $espaco]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ReservarEspaco  $reservarEspaco
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $espaco = EspacoLia::find($id);
-        $espaco->ItemsEspaco;
-
-        return view('admin.espaco.edit', ['espaco' => $espaco]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\ReservarEspaco  $reservarEspaco
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -83,7 +75,7 @@ class EspacoLiaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\ReservarEspaco  $reservarEspaco
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
