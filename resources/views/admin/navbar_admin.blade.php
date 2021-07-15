@@ -2,7 +2,7 @@
     <ul class="nav justify-content-start">
         <li class="nav-item">
             <a role="button" id="nav-bar-collapse" onClick="navBarCollapse()" class="nav-link">
-                <i class="bx bx-menu"></i> <span>Toggle Sidebar</span>
+                <i class="bx bx-menu"></i> <span></span>
             </a>
         </li>
     </ul>
@@ -33,10 +33,10 @@
 <script>
     function navBarCollapse(){
 
-        if(document.getElementById("nav-bar").style.left === "-30%"){
+        if(document.getElementById("nav-bar").style.left === "-100%"){
             document.getElementById("nav-bar").style.left = "0";
         } else{
-            document.getElementById("nav-bar").style.left = "-30%";
+            document.getElementById("nav-bar").style.left = "-100%";
         }
         
     }

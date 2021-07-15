@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EspacoLia;
+use App\Models\ReservarEspaco;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,8 +36,6 @@ class CarrinhoEspacoController extends Controller
 
         session()->put('reservaEspaco', $reserva);
 
-        return $espacos;
-
         return view('user.espacoLia.escolherEspaco', ['espacos'=> $espacos]);
     }
 
@@ -53,15 +52,38 @@ class CarrinhoEspacoController extends Controller
 
         if(session()->has('reservaEspaco.espacos')){
             $espacos = session()->pull('reservaEspaco.espacos');
-            foreach($espacos as $espaco){
-                if($espaco->id == $id){
-                    array_splice($espacos, $espaco->id);
-                } else {
+            foreach($espacos as $espacoControl){
+                if($espacoControl->id == $id){
+                    array_splice($espacos, $espacoControl->id);
+                }else if($espacoControl->id != $id){
+                    array_splice($espacos, $espacoControl->id);
                     session()->push('reservaEspaco.espacos', $espaco);
                 }
             }
         } else {
             session()->push('reservaEspaco.espacos', $espaco);
         }
+
+        return back();
+    }
+
+    public function confirmarReserva(){
+        $espacos = session()->get('reservaEspaco.espacos');
+
+        $reserva = ReservarEspaco::create([
+            'descricao' => session()->get('reservaEspaco.descricao'),
+            'user' => session()->get('reservaEspaco.user'),
+            'data_inicio' => session()->get('reservaEspaco.dataInicio'),
+            'data_fim' => session()->get('reservaEspaco.dataFim'),
+            'custo' => session()->get('reservaEspaco.custo')
+        ]);
+
+        foreach($espacos as $espaco){
+            $reserva->kits()->attach($espaco->id);
+        }
+
+        session()->forget('reservaEspaco');
+
+        return redirect('/');
     }
 }

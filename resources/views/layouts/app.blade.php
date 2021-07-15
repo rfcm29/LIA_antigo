@@ -23,6 +23,9 @@
     <div id="app">
 
         <div class="profile-container">
+            <ul class="nav justify-content-start">
+
+            </ul>
 
             <ul class="nav justify-content-end">
                 <!-- Authentication Links -->
