@@ -1,7 +1,6 @@
 @extends('admin.dashboard')
 
 @section('content')
-    <div class="container">
         <h1> {{ $kit->descricao }}</h1>
 
         <div class="kits-container">
@@ -81,5 +80,4 @@
             </form>
         </div>
 
-    </div>
 @endsection
