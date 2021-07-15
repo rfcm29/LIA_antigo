@@ -535,6 +535,14 @@ pre code {
   overflow-y: scroll;
 }
 
+.perfil h3{
+  margin-top: 1rem;
+}
+
+.perfil #btnPerfil{
+  margin-top: 1rem;
+}
+
 .contactos-container{
   display: flex;
   align-items: center;
