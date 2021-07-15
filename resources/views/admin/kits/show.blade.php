@@ -15,8 +15,6 @@
             </ul>
 
         </div>
-
-
         <br>
 
         @isset($kit->itens[0])
