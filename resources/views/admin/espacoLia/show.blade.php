@@ -19,4 +19,6 @@
             </li>
         </ul>
     </div>
+
+    <a href="/admin/espacoLia/{{ $espaco->id }}/edit" class="btn btn-primary">Editar</a>
 @endsection

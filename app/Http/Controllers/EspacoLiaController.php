@@ -89,7 +89,7 @@ class EspacoLiaController extends Controller
         $espaco = EspacoLia::find($id);
         $items = $espaco->ItemsEspaco;
 
-        return view('admin.espaco.edit', ['espaco' => $espaco]);
+        return view('admin.espacoLia.edit', ['espaco' => $espaco]);
     }
 
     /**
