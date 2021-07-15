@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EspacoLia;
+use App\Models\ItemEspaco;
 use Illuminate\Http\Request;
 
 class EspacoLiaController extends Controller
@@ -37,7 +38,30 @@ class EspacoLiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'descricao' => 'required',
+            'preco' => 'required|numeric'
+        ]);
+
+        if($request->items){
+            $request->validate([
+                'itens.*.items' => 'required'
+            ]);
+
+            $espaco = EspacoLia::create([
+                'descricao' => $request->descricao,
+                'preco' => $request->preco
+            ]);
+
+            foreach($request->items as $item){
+                ItemEspaco::create([
+                    'espaco_id' => $espaco->id,
+                    'descricao' => $item
+                ]);
+            }
+        }
+
+        return redirect('/admin/espacoLia');
     }
 
     /**
@@ -49,9 +73,9 @@ class EspacoLiaController extends Controller
     public function show($id)
     {
         $espaco = EspacoLia::find($id);
-        $espaco->ItemsEspaco;
+        $espaco->Items;
 
-        return view('admin.espaco.show', ['espaco' => $espaco]);
+        return view('admin.espacoLia.show', ['espaco' => $espaco]);
     }
 
     /**
@@ -63,7 +87,7 @@ class EspacoLiaController extends Controller
     public function edit($id)
     {
         $espaco = EspacoLia::find($id);
-        $espaco->ItemsEspaco;
+        $items = $espaco->ItemsEspaco;
 
         return view('admin.espaco.edit', ['espaco' => $espaco]);
     }

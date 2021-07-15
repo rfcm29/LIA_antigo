@@ -33,9 +33,6 @@ Auth::routes();
 
 Route::get('/contactos', [AuthController::class, 'contactos'])->name('contactos');
 
-//ver carrinho
-Route::get('/carrinho', [Carrinho::class, 'showCarrinho'])->middleware('auth')->name('carrinho');
-
 Route::get('/categoria/{categoria}', [KitsController::class, 'getKits']);
 Route::get('/kit/{id}', [KitsController::class, 'showKit']);
 
@@ -45,16 +42,18 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/cancelaReserva', [Carrinho::class, 'cancelaReserva'])->name('cancela.reserva');
     Route::post('/addCarrinho/{id}', [Carrinho::class, 'adicionaItem']);
     Route::post('/removeKit/{id}', [Carrinho::class, 'removeKit'])->name('removeKit');
-    Route::get('/confirmarReserva', function() { return view('user.confirmaReserva'); });
+    Route::get('/confirmarReserva', function() { return view('user.carrinho.confirmaReserva'); });
     Route::post('/confirmaReserva', [Carrinho::class, 'confirmaReserva']);
-});
 
-Route::get('/perfil/{id}', [PerfilController::class, 'index'])->middleware('auth');
+    Route::get('/perfil/{id}', [PerfilController::class, 'index'])->middleware('auth');
+});
 
 //usar grupos para limitar acesso a certas rotas
 
 Route::group(['middleware' => ['UserTypeCheck']], function () {
     Route::get('/reservarEspaco', [CarrinhoEspacoController::class, 'index']);
+    Route::post('/reservarEspaco', [CarrinhoEspacoController::class, 'criaCarrinho'])->name('cria.carrinhoEspaco');
+    Route::post('/cancelarReservaEspaco', [CarrinhoEspacoController::class, 'cancelarReserva']);
 });
 
 Route::group(['middleware'=> ['UserTypeCheck']], function () {

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ReservarEspaco extends Model
 {
     use HasFactory;
+
+    protected $table = "reservar_espaco";
 }

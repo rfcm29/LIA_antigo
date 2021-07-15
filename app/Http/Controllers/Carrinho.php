@@ -42,7 +42,7 @@ class Carrinho extends Controller
     public function cancelaReserva() {
         session()->pull('reserva');
 
-        return view('user.criarCarrinho');
+        return view('user.carrinho.criarCarrinho');
     }
 
     public function adicionaItem($id){

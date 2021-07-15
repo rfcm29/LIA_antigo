@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ItemsEspaço extends Model
+class ItemEspaco extends Model
 {
     use HasFactory;
 
     protected $table = 'items_espaco';
 
-    /**
-     * Get the EspacoLia that owns the ItemsEspaço
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    protected $fillable = [
+        'descricao',
+        'espaco_id'
+    ];
+
     public function EspacoLia(): BelongsTo
     {
         return $this->belongsTo(EspacoLia::class, 'espaco_id');

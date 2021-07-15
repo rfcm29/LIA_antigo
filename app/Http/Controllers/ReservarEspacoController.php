@@ -14,7 +14,9 @@ class ReservarEspacoController extends Controller
      */
     public function index()
     {
-        //
+        $reservas = ReservarEspaco::all();;
+
+        return view('admin.reservaEspaco.index', ['reservas' => $reservas]);
     }
 
     /**
@@ -46,7 +48,9 @@ class ReservarEspacoController extends Controller
      */
     public function show($id)
     {
-        //
+        $reserva = ReservarEspaco::find($id);
+
+        return view('admin.reservaEspaco.show', ['reserva' => $reserva]);
     }
 
     /**

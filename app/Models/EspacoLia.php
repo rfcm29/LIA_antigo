@@ -12,6 +12,11 @@ class EspacoLia extends Model
 
     protected $table = 'espaco_lia';
 
+    protected $fillable = [
+        'descricao',
+        'preco'
+    ];
+
     /**
      * Get all of the Items for the EspacoLia
      *
@@ -19,6 +24,6 @@ class EspacoLia extends Model
      */
     public function Items(): HasMany
     {
-        return $this->hasMany(ItemsEspaço::class, 'espaco_id');
+        return $this->hasMany(ItemEspaco::class, 'espaco_id');
     }
 }

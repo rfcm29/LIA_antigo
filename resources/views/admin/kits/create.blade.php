@@ -85,49 +85,54 @@
                 "</tr>";
             $("#tableKit tbody").append(markup);
         });
+
         $(document).on('DOMSubtreeModified', function (e) {
-        const kits = document.getElementsByClassName("kit");
-        var sugestoes;
-        var codigos = []
+            const kits = document.getElementsByClassName("kit");
+            var sugestoes;
+            var codigos = []
 
-        console.log(kits)
+            console.log(kits)
 
-        for (let i = 0; i < kits.length; i++) {
+            for (let i = 0; i < kits.length; i++) {
 
-        const inputHandler = function(e) {
-            const run = true;
-            $.ajax({
-                url: "/admin/kits/search",
-                type: "POST",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    kit: kits[i].value,
-                },
-                success:function(data){
-                    codigos = []
-                    sugestoes = data.success;
-                    console.log(sugestoes);
-                    sugestoes.forEach(kit => {
-                        codigos.push(kit.lia_code)
-                    });
-                    console.log(codigos)
-                    $(".kit").autocomplete({
-                        source: codigos
-                    })
-                }
-            })
-        }
-
-        if(kits[i] != null){
-
-                kits[i].addEventListener('input', inputHandler);
-                kits[i].addEventListener('propertychange', inputHandler);
+            const inputHandler = function(e) {
+                const run = true;
+                $.ajax({
+                    url: "/admin/kits/search",
+                    type: "POST",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        kit: kits[i].value,
+                    },
+                    success:function(data){
+                        codigos = []
+                        sugestoes = data.success;
+                        console.log(sugestoes);
+                        sugestoes.forEach(kit => {
+                            codigos.push(kit.lia_code)
+                        });
+                        console.log(codigos)
+                        $(".kit").autocomplete({
+                            source: codigos
+                        })
+                    }
+                })
             }
+
+            if(kits[i] != null){
+
+                    kits[i].addEventListener('input', inputHandler);
+                    kits[i].addEventListener('propertychange', inputHandler);
+                }
+            }
+        });
+
+    });
+
+    function deleteRow(btn){
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
         }
-    });
-
-
-    });
 
 </script>
 

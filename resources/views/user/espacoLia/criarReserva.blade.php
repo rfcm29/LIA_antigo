@@ -7,7 +7,7 @@
 
     <br>
 
-    <form action="" method="post">
+    <form action="{{ route('cria.carrinhoEspaco') }}" method="post">
         @csrf
         <div>
             <label for="dataInicio">Data de Inicio</label>
@@ -22,7 +22,7 @@
             <input type="text" name="motivo" id="motivo">
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Escolher Espaço</button>
+        <button type="submit" class="btn btn-primary">Seguinte</button>
     </form>
 </div>
 

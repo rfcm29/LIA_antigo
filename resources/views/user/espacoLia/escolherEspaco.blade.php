@@ -23,5 +23,10 @@
                 <p>Posto 4</p>
             </div>
         </div>
+
+        <form action="/cancelarReservaEspaco" method="post">
+            @csrf
+            <button type="submit" class="btn btn-danger">Cancelar</button>
+        </form>
     </div>
 @endsection
