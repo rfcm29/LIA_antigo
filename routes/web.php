@@ -54,6 +54,8 @@ Route::group(['middleware' => ['UserTypeCheck']], function () {
     Route::get('/reservarEspaco', [CarrinhoEspacoController::class, 'index']);
     Route::post('/reservarEspaco', [CarrinhoEspacoController::class, 'criaCarrinho'])->name('cria.carrinhoEspaco');
     Route::post('/cancelarReservaEspaco', [CarrinhoEspacoController::class, 'cancelarReserva']);
+    Route::post('/adicionaEspaco/{id}', [CarrinhoEspacoController::class, 'adicionarEspacoCarrinho']);
+    Route::post('/confirmarReservaEspaco', [CarrinhoEspacoController::class, 'confirmarReserva']);
 });
 
 Route::group(['middleware'=> ['UserTypeCheck']], function () {

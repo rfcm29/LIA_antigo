@@ -87,7 +87,7 @@ class EspacoLiaController extends Controller
     public function edit($id)
     {
         $espaco = EspacoLia::find($id);
-        $items = $espaco->ItemsEspaco;
+        $items = $espaco->Items;
 
         return view('admin.espacoLia.edit', ['espaco' => $espaco]);
     }
@@ -101,7 +101,57 @@ class EspacoLiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $espaco = EspacoLia::find($id);
+        $items = $espaco->Items;
+
+        $request->validate([
+            'descricao' => 'required',
+            'preco' => 'required|numeric'
+        ]);
+
+        foreach($items as $item){
+            if($request->editarItems){
+                $request->validate([
+                    'editarItems.*' => 'required'
+                ]);
+            $eliminarItem = true;
+                foreach($request->editarItems as $key => $editarItem){
+                    if($item->id == $key){
+                        $eliminarItem = false;
+                        $item->update([
+                            'descricao' => $editarItem
+                        ]);
+                        $item->save();
+                    }
+                }
+                if($eliminarItem){
+                    $item->delete();
+                }
+            } else {
+                $item->delete();
+            }
+        }
+
+        if($request->items){
+            $request->validate([
+                'itens.*.items' => 'required'
+            ]);
+
+            foreach($request->items as $item){
+                ItemEspaco::create([
+                    'espaco_id' => $espaco->id,
+                    'descricao' => $item
+                ]);
+            }
+        }
+
+        $espaco->update([
+            'descricao' => $request->descricao,
+            'preco' => $request->preco
+        ]);
+        $espaco->save();
+
+        return redirect('/admin/espacoLia/' . $id);
     }
 
     /**

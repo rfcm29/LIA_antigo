@@ -30,24 +30,19 @@ class CreateEspacoLiasTable extends Migration
 
         Schema::create('reservar_espaco', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user');
             $table->string('descricao');
             $table->date('data_inicio');
             $table->date('data_fim');
             $table->double('preco');
             $table->timestamps();
+            $table->foreign('user')->references('id')->on('users');
         });
 
         Schema::create('espaco_reserva', function (Blueprint $table) {
             $table->unsignedBigInteger('espaco_id');
             $table->unsignedBigInteger('reserva_id');
             $table->foreign('espaco_id')->references('id')->on('espaco_lia');
-            $table->foreign('reserva_id')->references('id')->on('reservar_espaco');
-        });
-
-        Schema::create('espaco_user', function(Blueprint $table){
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('reserva_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('reserva_id')->references('id')->on('reservar_espaco');
         });
     }
