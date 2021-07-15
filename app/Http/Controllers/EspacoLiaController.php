@@ -59,9 +59,10 @@ class EspacoLiaController extends Controller
                     'descricao' => $item
                 ]);
             }
+            return redirect('/admin/espacoLia');
         }
 
-        return redirect('/admin/espacoLia');
+        return back();
     }
 
     /**
