@@ -568,12 +568,25 @@ pre code {
 .espaco-container{
   display: flex;
   margin-top: 10px;
+  justify-content: space-between;
 }
 
-.espaco-container #posto1, #posto2, #posto3, #posto4{
-  font-size: 200px;
-  margin-right: 5px;
+.espaco-container .iposto{
+  font-size: 10vw;
   color: var(--green);
+}
+
+.btn-posto:hover .iposto{
+  border:2px solid var(--green);
+  border-radius: 5px;
+}
+
+.btn-posto:focus .iposto{
+  color: var(--white);
+}
+
+.btn-posto:focus{
+  background-color: var(--green);
 }
 
 .espaco-container .posto{
