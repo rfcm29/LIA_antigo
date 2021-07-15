@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h1>RESERVAS</h1>
+        <h1>Reservas</h1>
         <br>
 
         @isset($reservasPendentes[0])

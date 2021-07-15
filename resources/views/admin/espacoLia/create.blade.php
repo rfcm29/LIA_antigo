@@ -1,35 +1,33 @@
 @extends('admin.dashboard')
 
 @section('content')
-    <div class="container">
-        <h1>Novo Espaço de Trabalho</h1>
-        <br>
+    <h1>Novo Espaço de Trabalho</h1>
+    <br>
 
-        <form action="{{ route('espacoLia.store') }}" method="post">
-            @csrf
+    <form action="{{ route('espacoLia.store') }}" method="post">
+        @csrf
 
-            <div class="form-group">
-                <label for="descricao">Descrição</label>
-                <input type="text" name="descricao" id="descricao" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="preco">Preço</label>
-                <input type="text" name="preco" id="preco" class="form-control">
-            </div>
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input type="text" name="descricao" id="descricao" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="preco">Preço</label>
+            <input type="text" name="preco" id="preco" class="form-control">
+        </div>
 
-            <h2>Items disponiveis no espaço de trabalho</h2>
+        <h2>Items disponiveis no espaço de trabalho</h2>
 
-            <input type="button" class="addItem btn btn-primary" value="Adicionar Item">
+        <input type="button" class="addItem btn btn-primary" value="Adicionar Item">
 
-            <table id="tableItem" class="table">
-                <tbody>
-                </tbody>
-            </table>
+        <table id="tableItem" class="table">
+            <tbody>
+            </tbody>
+        </table>
 
-            <button type="submit" class="btn btn-success">Concluir</button>
-        </form>
+        <button type="submit" class="btn btn-success">Concluir</button>
+    </form>
 
-    </div>
 
     <script>
         $(document).ready(function(){
