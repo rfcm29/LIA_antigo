@@ -9,8 +9,12 @@
 </head>
 <body>
 <div class="profile-container">
-        <ul class="nav justify-content-end">
-            @guest
+    <ul class="nav justify-content-start">
+
+    </ul>
+
+    <ul class="nav justify-content-end">
+        @guest
             <li class="nav-item">
                 <a href="{{ route('login') }}" class="nav-link">LOGIN</a>
             </li>
@@ -20,7 +24,7 @@
             </li>
 
             <li class="nav-item">
-                <div class="nav-link"><a href="{{ route('carrinho') }}" class="fa fa-shopping-cart"></a></div>
+                <div class="nav-link"><a href="{{ route('carrinho') }}" class="bx bxs-cart"></a></div>
 
             </li>
 
@@ -29,21 +33,21 @@
                     {{ __('Logout') }}
                 </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                </form>
-            </li>
-
-            @if (Auth::user()->isAdmin())
-                <li class="nav-item">
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link">ADMIN</a>
-                </li>
-            @endif
-        @endguest
-        </ul>
+                @if (Auth::user()->isAdmin())
+                    <li class="nav-item">
+                        <a href="{{ route('admin.home') }}" class="nav-link">ADMIN</a>
+                    </li>
+                @endif
+                @if (Auth::user()->user_type == 2 || Auth::user()->isAdmin())
+                    <li class="nav-item">
+                        <a href="/reservarEspaco" class="nav-link">ESPAÇO.LIA</a>
+                    </li>
+                @endif
+            @endguest
+    </ul>
 </div>
 
-<div class="container">
+<div class="container perfil">
 
     <a href="{{ route('home') }}">
         <img src="{{url('/images/logo_1.png')}}" width="30%">
@@ -63,7 +67,11 @@
         <input type="text" id="telemovel" name="telemovel" value="{{$user->telefone}}" class="form-control">
         <h3>Centro de Custos</h3>
         <select id="centro_custos" name="centro_custos" class="form-control">
-        <input type="submit" value="ALTERAR" class="btn btn-primary">
+            <option value="ECGM">ECGM</option>
+            <option value="EI">EI</option>
+            <option value="DP">DP</option>
+        </select>
+        <input type="submit" value="ALTERAR" class="btn btn-primary" id="btnPerfil">
     </form>
 
     <br><br>
