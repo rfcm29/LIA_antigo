@@ -1,10 +1,7 @@
-@extends('admin.dashboard')
+@extends('user.perfil.perfil')
 
 @section('content')
     <div class="container">
-        <h1>RESERVAS</h1>
-        <br>
-
         <h2>Todas as Reservas</h2>
         <table class="table">
             <thead>
@@ -13,7 +10,7 @@
                     <th>Email</th>
                     <th>Data Inicio</th>
                     <th>Data Fim</th>
-                    <th></th>
+                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +20,7 @@
                     <td>{{ $reserva->getUser->email }}</td>
                     <td>{{ $reserva->data_inicio }}</td>
                     <td>{{ $reserva->data_fim }}</td>
-                    <td><a href="/admin/reservaEspaco/{{ $reserva->id }}" class="btn btn-block btn-secondary">Ver</a></td>
+                    <td>{{ $reserva->estadoReserva->descricao }}</td>
                 </tr>
                 @endforeach
             </tbody>

@@ -75,11 +75,11 @@ class CarrinhoEspacoController extends Controller
             'user' => session()->get('reservaEspaco.user'),
             'data_inicio' => session()->get('reservaEspaco.dataInicio'),
             'data_fim' => session()->get('reservaEspaco.dataFim'),
-            'custo' => session()->get('reservaEspaco.custo')
+            'preco' => session()->get('reservaEspaco.custo')
         ]);
 
         foreach($espacos as $espaco){
-            $reserva->kits()->attach($espaco->id);
+            $reserva->Espacos()->attach($espaco->id);
         }
 
         session()->forget('reservaEspaco');

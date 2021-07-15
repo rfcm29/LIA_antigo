@@ -69,4 +69,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reserva::class, 'user');
     }
+
+    /**
+     * Get all of the ReservasEspacos for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ReservasEspacos(): HasMany
+    {
+        return $this->hasMany(ReservarEspaco::class, 'user');
+    }
 }

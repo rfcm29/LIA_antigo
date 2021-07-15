@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/confirmaReserva', [Carrinho::class, 'confirmaReserva']);
 
     Route::get('/perfil/{id}', [PerfilController::class, 'index'])->middleware('auth');
+    Route::get('/reservas/{id}', [PerfilController::class, 'getReservas'])->middleware('auth');
 });
 
 //usar grupos para limitar acesso a certas rotas

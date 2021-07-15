@@ -13,6 +13,14 @@ class ReservarEspaco extends Model
 
     protected $table = "reservar_espaco";
 
+    protected $fillable = [
+        'descricao',
+        'user',
+        'data_inicio',
+        'data_fim',
+        'preco'
+    ];
+
     /**
      * The Espacos that belong to the ReservarEspaco
      *
@@ -28,8 +36,8 @@ class ReservarEspaco extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(): BelongsTo
+    public function getUser(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'foreign_key', 'other_key');
+        return $this->belongsTo(User::class, 'user');
     }
 }

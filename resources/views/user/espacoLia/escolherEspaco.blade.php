@@ -43,7 +43,7 @@
         </form>
         <form action="/confirmarReservaEspaco" method="post">
             @csrf
-            <button type="submit" class="btn btn-sucess">Continuar</button>
+            <button type="submit" class="btn btn-success">Continuar</button>
         </form>
     </div>
 @endsection
